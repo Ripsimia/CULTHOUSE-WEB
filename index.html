@@ -276,19 +276,21 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: CONTACTO. Cambia el email. Foto: img/equipo.jpg -->
+  <!-- ✏️ EDITA AQUÍ: CONTACTO. El email visible está en <strong>. El formulario envía a la dirección que aparece en action="https://formsubmit.co/…". Foto: img/equipo.jpg -->
   <section class="contacto" id="contacto" data-nota="cuéntanos, la casa ya se está girando">
     <div class="cont">
       <div>
         <h2 class="gigante">Hablemos</h2>
         <div class="izq">
           <div class="foto"><span>Foto del equipo</span><img src="img/equipo.jpg" alt="" onerror="this.remove()"></div>
-          <p>Si tienes una historia, una campaña o un encargo, escríbenos y te contestamos enseguida.<strong>hola@culthouse.art</strong></p>
+          <p>Si tienes una historia, una campaña o un encargo, escríbenos y te contestamos enseguida.<strong>ripsimiamkr@hotmail.com</strong></p>
         </div>
       </div>
-      <form id="form" name="contacto" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="no-rellenar">
-        <input type="hidden" name="form-name" value="contacto">
-        <p hidden><label>No rellenar <input name="no-rellenar"></label></p>
+      <form id="form" action="https://formsubmit.co/ripsimiamkr@hotmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde la web de CULTHOUSE">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" id="f-next" value="">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <h3>Cuéntanos tu proyecto</h3>
         <label for="f-nombre" class="sr">Nombre</label>
         <input id="f-nombre" name="nombre" placeholder="Nombre" autocomplete="name" required>
@@ -329,6 +331,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     },{rootMargin:'-45% 0px -50% 0px'});
     secciones.forEach(function(s){io.observe(s)});
   }
+  var next=document.getElementById('f-next');
+  if(next) next.value=new URL('gracias.html', location.href).href;
 })();
 </script>
 </body>
