@@ -62,6 +62,19 @@ a{color:inherit}
 .pie-lat{display:flex;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--linea);font-size:12px;color:var(--gris)}
 .pie-lat a,footer a{color:var(--gris);text-decoration:none}
 .pie-lat a:hover,footer a:hover{color:var(--tinta)}
+.botones{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.btn{display:inline-block;padding:11px 18px;border:1px solid var(--tinta);color:var(--tinta);text-decoration:none;font-weight:500;font-size:14px}
+.btn:hover{background:var(--tinta);color:var(--papel)}
+.btn-lleno{background:var(--tinta);color:var(--papel)}
+.btn-lleno:hover{background:var(--luz);border-color:var(--luz);color:#161512}
+.correo{margin-top:14px!important;font-size:14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.correo span{color:var(--gris)}
+.correo a{color:var(--tinta)}
+.copiar{padding:4px 10px;font-size:12px;background:transparent;color:var(--tinta);border:1px solid var(--linea)}
+.copiar:hover{background:var(--tinta);color:var(--papel)}
+.flotante{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--luz);color:#161512;text-decoration:none;font-weight:500;font-size:14px;padding:12px 18px;border-radius:999px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.flotante:hover{background:var(--tinta);color:var(--papel)}
+.pie-lat a{color:var(--tinta)!important}
 .vias{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px;font-size:14px}
 .vias a{text-decoration:none;border-bottom:1px solid var(--linea)}
 .vias a:hover{border-color:var(--tinta)}
@@ -191,7 +204,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   </div>
   <a class="cta" href="#contacto">Cuéntanos tu proyecto</a>
   <!-- ✏️ EDITA AQUÍ: WhatsApp e Instagram de la barra lateral -->
-  <div class="pie-lat"><a href="https://wa.me/34651129062" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">@culthouse_media</a></div>
+  <div class="pie-lat"><a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">@culthouse_media</a></div>
 </aside>
 
 <main>
@@ -290,11 +303,14 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
           <div class="foto"><span>Foto del equipo</span><img src="img/equipo.jpg" alt="" onerror="this.remove()"></div>
           <div>
           <p>Si tienes una historia, una campaña o un encargo, escríbenos y te contestamos enseguida.</p>
-          <ul class="vias">
-            <li><a href="https://wa.me/34651129062" target="_blank" rel="noopener">WhatsApp +34 651 129 062</a></li>
-            <li><a href="mailto:ripsimiamkr@hotmail.com">ripsimiamkr@hotmail.com</a></li>
-            <li><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram @culthouse_media</a></li>
-          </ul>
+          <div class="botones">
+            <a class="btn btn-lleno" href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+            <a class="btn" href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a>
+          </div>
+          <p class="correo">
+            <span>Email:</span> <a href="mailto:ripsimiamkr@hotmail.com" id="correo">ripsimiamkr@hotmail.com</a>
+            <button type="button" class="copiar" id="copiar">Copiar</button>
+          </p>
           </div>
         </div>
       </div>
@@ -316,9 +332,11 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   </section>
 </main>
 
+<a class="flotante" href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">WhatsApp</a>
+
 <footer>
   <span>© 2026 CULT HOUSE MEDIA, S.L.</span>
-  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062" target="_blank" rel="noopener">WhatsApp</a></span>
+  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a></span>
 </footer>
 
 <style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
@@ -343,6 +361,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     },{rootMargin:'-45% 0px -50% 0px'});
     secciones.forEach(function(s){io.observe(s)});
   }
+  var cp=document.getElementById('copiar');
+  if(cp) cp.addEventListener('click',function(){
+    var t='ripsimiamkr@hotmail.com';
+    function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
   var next=document.getElementById('f-next');
   if(next) next.value=new URL('gracias.html', location.href).href;
 })();
