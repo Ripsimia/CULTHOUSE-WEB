@@ -144,6 +144,10 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .obra:hover::after{opacity:1}
 .obra:hover,.obra:hover .sello,.obra:hover h3 span{color:var(--papel)}
 
+.obra{grid-column:span 2}
+.obra.con-foto{background:var(--img) top center/100% auto no-repeat;padding-top:calc(56.25% + 16px);gap:20px;justify-content:flex-start;transition:background-size .5s}
+.obra.con-foto:hover{background-size:104% auto}
+.obra.con-foto::after{display:none}
 /* Contacto */
 .contacto{border-bottom:0}
 .contacto h2.gigante{font-size:clamp(3.2rem,7vw,7rem)}
@@ -256,7 +260,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <section class="clientes" data-nota="gente que ya confió en nosotros">
     <p class="titulo">¿Con quién hemos trabajado?</p>
     <div class="mesa">
-      <div class="ficha">ICAA</div>
+      <div class="ficha">Roche</div>
       <div class="ficha">Ayuntamiento de Madrid</div>
       <div class="ficha">Ministerio de Sanidad</div>
       <div class="ficha">Acción Cultural Española</div>
@@ -287,8 +291,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <section id="proyectos" data-nota="aquí podría ir tu proyecto">
     <h2 class="gigante">Proyectos</h2>
     <div class="rejilla">
-      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
-      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
+      <a class="obra con-foto" style="--img:url(img/proyecto-tierra-paz.jpg)" href="#" target="_blank" rel="noopener"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
+      <a class="obra con-foto" style="--img:url(img/proyecto-la-movie.jpg)" href="#" target="_blank" rel="noopener"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
       <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">Institucional</span><h3>Título del proyecto.<span>Campaña para institución pública</span></h3></a>
       <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">Marca</span><h3>Título del proyecto.<span>Vídeo corporativo</span></h3></a>
     </div>
