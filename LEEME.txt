@@ -1,0 +1,43 @@
+CULTHOUSE · Cómo publicar y editar la web
+==========================================
+
+ANTES DE PUBLICAR: AÑADE LAS FOTOS
+Mete en la carpeta "img" estas fotos con estos nombres exactos (en minúsculas, .jpg):
+  portada.jpg   fotograma del showreel (portada)
+  sima.jpg      retrato de Sima
+  oscar.jpg     retrato de Oscar
+  rodaje.jpg    foto de rodaje (Servicios)
+  equipo.jpg    foto de los dos (Contacto)
+Si falta alguna, en su sitio sale un recuadro gris con el nombre. Mejor fotos verticales,
+de unos 1200 px de alto y menos de 500 KB cada una.
+
+PUBLICAR EN NETLIFY (la primera vez)
+1. Entra en https://app.netlify.com/drop y crea una cuenta.
+2. Arrastra la carpeta "culthouse-web" entera a la página.
+3. Te da una dirección provisional (algo.netlify.app). Revisa que todo se ve bien.
+4. En Netlify: Domain management > Add a domain > escribe culthouse.art.
+   Netlify te dice qué datos DNS cambiar donde compraste el dominio. Al cambiarlos,
+   culthouse.art mostrará esta web en lugar de la actual.
+
+RECIBIR LOS MENSAJES DEL FORMULARIO
+En Netlify: Forms > activa la detección de formularios (Enable form detection) y
+vuelve a subir la carpeta. Luego, en Forms > contacto > Form notifications,
+añade tu email para que te lleguen los mensajes.
+
+CAMBIAR TEXTOS
+1. Abre index.html con un editor de texto (Bloc de notas en Windows, TextEdit en Mac
+   en modo "texto sin formato"). No uses Word.
+2. Busca los avisos que dicen ✏️ EDITA AQUÍ. Cambia solo las palabras que están entre
+   las etiquetas, por ejemplo entre <p> y </p>. No borres los símbolos < >.
+3. Guarda.
+
+CAMBIAR UNA FOTO
+Sustituye el archivo en "img" por otro con el mismo nombre.
+
+PUBLICAR LOS CAMBIOS
+En Netlify, entra en tu web > Deploys y arrastra otra vez la carpeta entera.
+En un minuto está actualizada.
+
+SI ALGO SE ROMPE
+En Netlify > Deploys puedes volver a una versión anterior ("Publish deploy").
+Guarda siempre una copia de la carpeta antes de editar.

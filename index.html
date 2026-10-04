@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ✏️ EDITA AQUÍ: título y descripción que salen en Google y al compartir el enlace -->
+<title>CULTHOUSE | Productora audiovisual en Madrid</title>
+<meta name="description" content="Productora audiovisual en Madrid. Cine, documental y comunicación con personalidad, hechos para no caducar.">
+<meta property="og:title" content="CULTHOUSE | Productora audiovisual en Madrid">
+<meta property="og:description" content="Cine, documental y comunicación con personalidad, hechos para no caducar.">
+<meta property="og:image" content="img/portada.jpg">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;500&family=Work+Sans:wght@300;400;500&family=Caveat:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: barra lateral fija con la izbushka dibujada a mano + columna principal de titulares gigantes y finos */
+:root{
+  --papel:#f5f4f1; --tarjeta:#ffffff; --tinta:#161512; --gris:#736f66; --linea:#d8d4cb; --luz:#d9993a; --foto:#cfcbc3;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --texto:"Work Sans",system-ui,sans-serif;
+  --mano:"Caveat","Comic Sans MS",cursive;
+  --lateral:248px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --papel:#131210; --tarjeta:#1b1a17; --tinta:#ece7dc; --gris:#9b968b; --linea:#35322c; --luz:#f2c883; --foto:#2a2824; color-scheme:dark}}
+:root[data-theme="dark"]{--papel:#131210; --tarjeta:#1b1a17; --tinta:#ece7dc; --gris:#9b968b; --linea:#35322c; --luz:#f2c883; --foto:#2a2824; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-weight:300;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--luz);outline-offset:3px}
+.izb{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* Barra lateral */
+.lateral{position:fixed;top:0;left:0;bottom:0;width:var(--lateral);overflow:hidden;grid-template-columns:minmax(0,1fr);border-right:1px solid var(--linea);background:var(--papel);display:grid;grid-template-rows:auto 1fr auto auto;z-index:10}
+.cab{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 18px 22px;border-bottom:1px solid var(--linea)}
+.marca{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--display);font-weight:500;font-size:21px;letter-spacing:.02em}
+.marca .logo{width:36px}
+/* Logo izbushka en capas: casa + pata izquierda + pata derecha */
+.logo{position:relative;display:inline-block;aspect-ratio:461/485;flex:none}
+.logo i{position:absolute;inset:0;background-position:center;background-size:contain;background-repeat:no-repeat}
+.logo .casa{background-image:url(img/logo-casa.png);z-index:2}
+.logo .izq{background-image:url(img/logo-pata-izq.png);transform-origin:45% 70.5%}
+.logo .der{background-image:url(img/logo-pata-der.png);transform-origin:70.5% 70.5%}
+.anda:hover .izq,.camina .izq{animation:pataI .7s ease-in-out infinite}
+.anda:hover .der,.camina .der{animation:pataD .7s ease-in-out infinite}
+.anda:hover .casa,.camina .casa{animation:bote .35s ease-in-out infinite alternate}
+@keyframes pataI{0%,100%{transform:rotate(0)}25%{transform:rotate(10deg)}75%{transform:rotate(-10deg)}}
+@keyframes pataD{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+@keyframes bote{from{transform:translateY(0)}to{transform:translateY(-1.8%)}}
+.menu{list-style:none;margin:0;padding:0;text-align:right;font-size:12.5px;line-height:1.7}
+.menu a{text-decoration:none;color:var(--gris)}
+.menu a:hover,.menu a[aria-current="true"]{color:var(--tinta)}
+.escena{display:grid;place-items:center;align-content:center;gap:12px;padding:20px;text-align:center}
+.escena .logo{width:178px;transition:transform .9s cubic-bezier(.6,0,.2,1)}
+.escena[data-s="servicios"] .logo{transform:scaleX(-1)}
+.nota{font-family:var(--mano);font-size:21px;line-height:1.05;color:var(--tinta);max-width:17ch;transform:rotate(-4deg);min-height:2.2em}
+.cta{display:block;padding:16px 18px;border-top:1px solid var(--linea);text-decoration:none;font-weight:500;font-size:14px}
+.cta:hover{background:var(--tinta);color:var(--papel)}
+.pie-lat{display:flex;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--linea);font-size:12px;color:var(--gris)}
+
+/* Columna principal */
+main{margin-left:var(--lateral);padding-inline:clamp(16px,3vw,40px);overflow-x:clip}
+section{padding-block:clamp(56px,9vw,120px);border-bottom:1px solid var(--linea)}
+.gigante{font-family:var(--display);font-weight:300;text-transform:uppercase;line-height:.84;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
+.foto{position:relative;overflow:hidden;background:linear-gradient(160deg,var(--foto),var(--papel));filter:grayscale(1);border:1px solid var(--linea)}
+.foto span{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;color:var(--gris);text-align:center;padding:8px}
+.foto img{position:relative;display:block;width:100%;height:100%;object-fit:cover}
+
+/* Portada */
+.portada{padding-block:clamp(28px,4vw,48px) 28px}
+.portada h1{font-size:min(16rem,calc((100vw - var(--lateral) - 80px) / 4.4));white-space:nowrap}
+.portada .centro{display:grid;justify-items:center;gap:14px;margin-block:clamp(28px,5vw,56px)}
+.portada .foto{width:min(260px,60vw);aspect-ratio:4/5}
+.portada .centro p{margin:0;text-align:center;font-size:14px;max-width:24ch}
+.portada .bajo{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;font-size:13px}
+.portada .bajo p{margin:0}
+.portada .bajo .der{text-align:right;color:var(--gris)}
+
+/* Nosotros */
+.nos{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:clamp(32px,5vw,64px)}
+.nos .texto{display:grid;gap:16px;align-content:start;max-width:46ch}
+.nos .texto p{margin:0}
+.nos .texto p:first-child{font-size:18px;line-height:1.45;font-weight:400}
+.datos{display:grid;gap:12px;align-content:start}
+.dato{background:var(--tarjeta);border:1px solid var(--linea);padding:18px 20px;min-height:120px;display:flex;align-items:flex-end;font-size:14px}
+.equipo{max-width:760px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,32px);margin-top:clamp(40px,6vw,72px)}
+.persona .foto{aspect-ratio:4/5}
+.persona h3{font-family:var(--display);font-weight:500;font-size:28px;line-height:1;margin:16px 0 4px;text-transform:uppercase}
+.persona .rol{margin:0 0 6px;color:var(--gris)}
+.persona p{margin:0;max-width:40ch;font-size:14px}
+
+/* Clientes */
+.clientes{padding-block:clamp(48px,7vw,96px)}
+.clientes .titulo{font-family:var(--mano);font-size:26px;margin:0 0 28px;transform:rotate(-2deg);display:inline-block}
+.mesa{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:12px 4% 24px}
+.ficha{background:var(--tarjeta);border:1px solid var(--tinta);aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:12px;font-family:var(--display);font-weight:500;font-size:clamp(15px,1.8vw,22px);line-height:1.05;text-transform:uppercase;margin:-6px;transition:transform .3s}
+.ficha:nth-child(1){transform:translate(4%,10%) rotate(-2deg)}
+.ficha:nth-child(2){transform:translate(-2%,-8%) rotate(1.5deg);z-index:2}
+.ficha:nth-child(3){transform:translate(-6%,14%) rotate(-1deg)}
+.ficha:nth-child(4){transform:translate(-10%,-4%) rotate(2deg)}
+.ficha:nth-child(5){transform:translate(10%,4%) rotate(1deg);grid-column:2;z-index:3}
+.ficha:nth-child(6){transform:translate(-4%,-6%) rotate(-2.5deg);background:var(--tinta);color:var(--papel);font-family:var(--mano);text-transform:none;font-size:clamp(17px,2vw,24px)}
+.ficha:hover{transform:translateY(-6px) rotate(0);z-index:5}
+
+/* Servicios */
+.serv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.serv .foto{aspect-ratio:4/5;max-width:340px}
+.serv .titulo2{grid-column:2}
+.serv .lista{display:grid;gap:14px;max-width:44ch}
+.serv .lista p{margin:0}
+.servicios{list-style:none;margin:8px 0 0;padding:0;border-top:1px solid var(--linea)}
+.servicios li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linea)}
+.servicios li span:last-child{color:var(--gris);font-size:13px;text-align:right}
+
+/* Proyectos */
+.rejilla{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:clamp(32px,5vw,56px)}
+.obra{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px;padding:16px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);text-decoration:none;position:relative;overflow:hidden}
+.obra .sello{font-size:12px;color:var(--gris)}
+.obra h3{margin:0;font-weight:400;font-size:15px;line-height:1.3}
+.obra h3 span{display:block;color:var(--gris);font-weight:300}
+.obra::after{content:"";position:absolute;inset:0;background:var(--tinta);opacity:0;transition:opacity .35s;z-index:-1}
+.obra:hover::after{opacity:1}
+.obra:hover,.obra:hover .sello,.obra:hover h3 span{color:var(--papel)}
+
+/* Contacto */
+.contacto{border-bottom:0}
+.contacto h2.gigante{font-size:clamp(3.2rem,7vw,7rem)}
+.cont>*{min-width:0}
+.cont{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:end}
+.cont .izq{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:end;margin-top:28px}
+.cont .foto{width:160px;aspect-ratio:3/4}
+.cont .izq p{margin:0;max-width:30ch;font-size:14px}
+.cont .izq strong{display:block;margin-top:12px;font-weight:500}
+form{display:grid;gap:10px}
+form h3{margin:0 0 6px;font-weight:400;font-size:18px}
+input,textarea{width:100%;font:inherit;font-size:14px;color:var(--tinta);background:var(--tarjeta);border:1px solid var(--linea);padding:12px 14px;border-radius:0;resize:vertical}
+input:focus,textarea:focus{border-color:var(--tinta);outline:none}
+button{font:inherit;font-weight:500;font-size:14px;background:var(--tinta);color:var(--papel);border:0;padding:14px;cursor:pointer}
+button:hover{background:var(--luz);color:#161512}
+.estado{font-size:13px;color:var(--gris);min-height:1.4em;margin:0}
+footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--gris);border-top:1px solid var(--linea)}
+
+/* Móvil y tableta */
+@media (max-width:900px){
+  .lateral{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;width:auto;height:auto;border-right:0;border-bottom:1px solid var(--linea);display:block}
+  .cab{border-bottom:0;padding:12px 16px;align-items:center}
+  .menu{display:flex;gap:14px}
+  .escena,.cta,.pie-lat{display:none}
+  main,footer{margin-left:0}
+  .portada h1{font-size:calc((100vw - 32px) / 4.4)}
+  .nos,.serv,.cont{grid-template-columns:1fr}
+  .serv .titulo2{grid-column:auto;order:-1}
+  .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mesa{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ficha:nth-child(5){grid-column:auto}
+}
+@media (max-width:520px){
+  .menu{gap:10px;font-size:12px}
+  .menu li:first-child{display:none}
+  .equipo{grid-template-columns:1fr}
+  .cont .izq{grid-template-columns:1fr}
+  .obra{min-height:170px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<aside class="lateral">
+  <div class="cab">
+    <a href="#inicio" class="marca anda" aria-label="CULTHOUSE, inicio"><span class="logo" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>CULTHOUSE</a>
+    <ul class="menu">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+  <div class="escena anda" id="escena" data-s="inicio">
+    <span class="logo" role="img" aria-label="Izbushka de CULTHOUSE"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>
+    <p class="nota" id="nota">una casa que gira hacia cada historia</p>
+  </div>
+  <a class="cta" href="#contacto">Cuéntanos tu proyecto</a>
+  <!-- ✏️ EDITA AQUÍ: ciudad e Instagram de la barra lateral -->
+  <div class="pie-lat"><span>Madrid</span><span>@culthouse</span></div>
+</aside>
+
+<main>
+  <!-- ✏️ EDITA AQUÍ: PORTADA. La foto es img/portada.jpg -->
+  <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
+    <h1 class="gigante">Culthouse</h1>
+    <div class="centro">
+      <div class="foto"><span>Fotograma del showreel</span><img src="img/portada.jpg" alt="" onerror="this.remove()"></div>
+      <p>Cine, documental y comunicación hechos para no caducar</p>
+    </div>
+    <div class="bajo">
+      <p>Productora audiovisual</p>
+      <p class="der">Madrid y San Sebastián de los Reyes<br>Ficción, documental, instituciones y marcas</p>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: NOSOTROS. Cambia los textos entre <p> y </p>. Fotos: img/sima.jpg e img/oscar.jpg -->
+  <section id="nosotros" data-nota="oficio, intención y nada de ruido">
+    <h2 class="gigante">Nosotros</h2>
+    <div class="nos">
+      <div class="texto">
+        <p>CULTHOUSE se construye sobre el esfuerzo, la autenticidad y una ejecución decidida. Creamos trabajo con intención: limpio, seguro y pensado para durar.</p>
+        <p>Más que un estilo, es una forma de pensar basada en la precisión, la disciplina y en no conformarnos con lo corriente. Actuamos como verdaderos socios: nos implicamos a fondo, hacemos las preguntas adecuadas y damos forma a las ideas desde sus cimientos.</p>
+        <p>Quitamos ruido, nos centramos en lo que importa y construimos un trabajo honesto que deja huella. El resultado: con carácter sin ser estridente, auténtico sin ser forzado, atemporal por diseño.</p>
+      </div>
+      <div class="datos">
+        <div class="dato">Encargos para el ICAA, el Ayuntamiento de Madrid, el Ministerio de Sanidad y Acción Cultural Española</div>
+        <div class="dato">Dirección con más de 15 años de oficio y créditos en producciones para Netflix</div>
+        <div class="dato">Equipo de rodaje y estudio de edición propios en San Sebastián de los Reyes</div>
+      </div>
+    </div>
+    <div class="equipo">
+      <article class="persona">
+        <div class="foto"><span>Foto de Sima</span><img src="img/sima.jpg" alt="Retrato de Sima Abram" onerror="this.remove()"></div>
+        <h3>Sima Abram</h3>
+        <p class="rol">Productora ejecutiva</p>
+        <p>Productora y guionista. Levanta cada proyecto: desarrollo, financiación y producción.</p>
+      </article>
+      <article class="persona">
+        <div class="foto"><span>Foto de Oscar</span><img src="img/oscar.jpg" alt="Retrato de Oscar Morillas" onerror="this.remove()"></div>
+        <h3>Oscar Morillas</h3>
+        <p class="rol">Realizador y director</p>
+        <p>Dirige, realiza y rueda. Más de 15 años detrás de la cámara.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: CLIENTES. Cada <div class="ficha"> es una tarjeta (máximo 6) -->
+  <section class="clientes" data-nota="gente que ya confió en nosotros">
+    <p class="titulo">¿Con quién hemos trabajado?</p>
+    <div class="mesa">
+      <div class="ficha">ICAA</div>
+      <div class="ficha">Ayuntamiento de Madrid</div>
+      <div class="ficha">Ministerio de Sanidad</div>
+      <div class="ficha">Acción Cultural Española</div>
+      <div class="ficha">Festivales de cine</div>
+      <div class="ficha">Aquí podría estar tu proyecto</div>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: SERVICIOS. Foto: img/rodaje.jpg. Cada <li> es una línea de servicio -->
+  <section id="servicios" data-nota="de la idea a la pantalla">
+    <div class="serv">
+      <h2 class="gigante titulo2">De la idea<br>a la pantalla</h2>
+      <div class="foto"><span>Foto de rodaje</span><img src="img/rodaje.jpg" alt="" onerror="this.remove()"></div>
+      <div class="lista">
+        <p>Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
+        <ul class="servicios">
+          <li><span>Desarrollo y guion</span><span>idea, tratamiento, dossier</span></li>
+          <li><span>Producción</span><span>presupuesto, permisos, equipo</span></li>
+          <li><span>Dirección y rodaje</span><span>cámara, luz, sonido directo</span></li>
+          <li><span>Postproducción</span><span>montaje, color, mezcla</span></li>
+          <li><span>Distribución</span><span>festivales y lanzamiento</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: PROYECTOS. Para añadir uno, copia un bloque <a class="obra">…</a> entero y pégalo debajo. En href pon el enlace (Vimeo, YouTube) -->
+  <section id="proyectos" data-nota="aquí podría ir tu proyecto">
+    <h2 class="gigante">Proyectos</h2>
+    <div class="rejilla">
+      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
+      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
+      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">Institucional</span><h3>Título del proyecto.<span>Campaña para institución pública</span></h3></a>
+      <a class="obra" href="#" target="_blank" rel="noopener"><span class="sello">Marca</span><h3>Título del proyecto.<span>Vídeo corporativo</span></h3></a>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: CONTACTO. Cambia el email. Foto: img/equipo.jpg -->
+  <section class="contacto" id="contacto" data-nota="cuéntanos, la casa ya se está girando">
+    <div class="cont">
+      <div>
+        <h2 class="gigante">Hablemos</h2>
+        <div class="izq">
+          <div class="foto"><span>Foto del equipo</span><img src="img/equipo.jpg" alt="" onerror="this.remove()"></div>
+          <p>Si tienes una historia, una campaña o un encargo, escríbenos y te contestamos enseguida.<strong>hola@culthouse.art</strong></p>
+        </div>
+      </div>
+      <form id="form" name="contacto" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="no-rellenar">
+        <input type="hidden" name="form-name" value="contacto">
+        <p hidden><label>No rellenar <input name="no-rellenar"></label></p>
+        <h3>Cuéntanos tu proyecto</h3>
+        <label for="f-nombre" class="sr">Nombre</label>
+        <input id="f-nombre" name="nombre" placeholder="Nombre" autocomplete="name" required>
+        <label for="f-contacto" class="sr">Email o teléfono</label>
+        <input id="f-contacto" name="contacto" placeholder="Email o teléfono" required>
+        <label for="f-msg" class="sr">Mensaje</label>
+        <textarea id="f-msg" name="mensaje" rows="4" placeholder="Qué necesitas, para cuándo" required></textarea>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 CULT HOUSE MEDIA, S.L.</span>
+  <span>culthouse.art</span>
+</footer>
+
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+<script>
+(function(){
+  var escena=document.getElementById('escena'), nota=document.getElementById('nota');
+  var secciones=[].slice.call(document.querySelectorAll('main section[data-nota]'));
+  var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
+  function activar(sec){
+    var id=sec.id||'clientes';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto'}[id]||'inicio';
+    if(escena.dataset.s!==escenaId){
+      escena.dataset.s=escenaId;
+      if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
+    }
+    nota.textContent=sec.dataset.nota;
+    enlaces.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+id?'true':'false')});
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting) activar(e.target)});
+    },{rootMargin:'-45% 0px -50% 0px'});
+    secciones.forEach(function(s){io.observe(s)});
+  }
+})();
+</script>
+</body>
+</html>
