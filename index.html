@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- ✏️ EDITA AQUÍ: título y descripción que salen en Google y al compartir el enlace -->
 <title>CULTHOUSE | Productora audiovisual en Madrid</title>
-<meta name="description" content="Productora audiovisual en Madrid. Cine, documental y comunicación con personalidad, hechos para no caducar.">
+<meta name="description" content="Productora audiovisual en Madrid: publicidad y spots, vídeo corporativo, grabación de eventos, podcast y videopodcast, reels, videoclips, cine y documental.">
 <meta property="og:title" content="CULTHOUSE | Productora audiovisual en Madrid">
-<meta property="og:description" content="Cine, documental y comunicación con personalidad, hechos para no caducar.">
+<meta property="og:description" content="Spots, vídeo corporativo, eventos, podcast y videopodcast, reels, videoclips, cine y documental. Productora audiovisual en Madrid.">
 <meta property="og:image" content="img/portada.jpg">
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -135,6 +135,9 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .servicios li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--linea)}
 .servicios li span:last-child{color:var(--gris);font-size:13px;text-align:right}
 
+.formatos{list-style:none;margin:6px 0 10px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.formatos li{font-family:var(--display);font-weight:500;font-size:clamp(17px,1.6vw,21px);text-transform:uppercase;letter-spacing:.02em;line-height:1;padding:9px 14px;border:1px solid var(--tinta)}
+
 /* Proyectos */
 .rejilla{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:clamp(32px,5vw,56px)}
 .obra{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px;padding:16px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);text-decoration:none;position:relative;overflow:hidden}
@@ -222,7 +225,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
     <div class="bajo">
       <p>Productora audiovisual</p>
-      <p class="der">Madrid y San Sebastián de los Reyes<br>Ficción, documental, instituciones y marcas</p>
+      <p class="der">Madrid y San Sebastián de los Reyes<br>Spots, vídeo corporativo, eventos, podcast, reels y videoclips</p>
     </div>
   </section>
 
@@ -271,13 +274,22 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: SERVICIOS. Foto: img/rodaje.jpg. Cada <li> es una línea de servicio -->
+  <!-- ✏️ EDITA AQUÍ: SERVICIOS. Foto: img/rodaje.jpg. La lista "formatos" son los tipos de vídeo (deben coincidir con los anuncios). Cada <li> es una línea -->
   <section id="servicios" data-nota="de la idea a la pantalla">
     <div class="serv">
       <h2 class="gigante titulo2">De la idea<br>a la pantalla</h2>
       <div class="foto"><span>Foto de rodaje</span><img src="img/rodaje.jpg" alt="" onerror="this.remove()"></div>
       <div class="lista">
         <p>Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
+        <ul class="formatos" aria-label="Qué grabamos">
+          <li>Publicidad y spots</li>
+          <li>Vídeo corporativo</li>
+          <li>Eventos corporativos</li>
+          <li>Podcast y videopodcast</li>
+          <li>Reels y redes sociales</li>
+          <li>Videoclips</li>
+          <li>Cine y documental</li>
+        </ul>
         <ul class="servicios">
           <li><span>Desarrollo y guion</span><span>idea, tratamiento, dossier</span></li>
           <li><span>Producción</span><span>presupuesto, permisos, equipo</span></li>
