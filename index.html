@@ -95,6 +95,8 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .portada h1{position:relative;font-size:min(24rem,calc((100vw - var(--lateral) - 84px) / 2.65));white-space:nowrap}
 .portada .centro{display:grid;justify-items:center;gap:14px;margin-block:clamp(28px,5vw,56px)}
 .portada .foto{width:min(260px,60vw);aspect-ratio:4/5}
+.video-portada{width:min(760px,100%);aspect-ratio:16/9;background:#000;overflow:hidden}
+.video-portada video{display:block;width:100%;height:100%;object-fit:cover}
 .portada .centro p{margin:0;text-align:center}
 .portada .claim{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1;letter-spacing:.01em;margin-top:10px!important;text-wrap:balance}
 .portada .tipos{font-size:15px;font-weight:500;max-width:46ch;line-height:1.5}
@@ -223,11 +225,15 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 </aside>
 
 <main>
-  <!-- ✏️ EDITA AQUÍ: PORTADA. La foto es img/portada.jpg -->
+  <!-- ✏️ EDITA AQUÍ: PORTADA. El vídeo es img/portada.mp4 (sin sonido, en bucle) y su imagen de inicio img/portada-video.jpg -->
   <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
     <h1 class="gigante">Culthouse<span class="sr">, productora audiovisual en Madrid</span></h1>
     <div class="centro">
-      <div class="foto"><span>Fotograma del showreel</span><img src="img/portada.jpg" alt="" onerror="this.remove()"></div>
+      <div class="video-portada">
+        <video id="video-portada" autoplay muted loop playsinline preload="auto" poster="img/portada-video.jpg" aria-label="Showreel de CULTHOUSE: vídeos de producto, corporativos, eventos y redes sociales">
+          <source src="img/portada.mp4" type="video/mp4">
+        </video>
+      </div>
       <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
       <p class="tipos">Spots · Vídeo corporativo · Eventos · Podcast y videopodcast · Reels · Videoclips</p>
       <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
@@ -396,6 +402,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
     if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
   });
+  var vp=document.getElementById('video-portada');
+  if(vp && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){vp.removeAttribute('autoplay');vp.pause();}
   var next=document.getElementById('f-next');
   if(next) next.value=new URL('gracias.html', location.href).href;
 })();
