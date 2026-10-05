@@ -92,10 +92,15 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 
 /* Portada */
 .portada{padding-block:clamp(28px,4vw,48px) 28px}
-.portada h1{font-size:min(24rem,calc((100vw - var(--lateral) - 84px) / 2.65));white-space:nowrap}
+.portada h1{position:relative;font-size:min(24rem,calc((100vw - var(--lateral) - 84px) / 2.65));white-space:nowrap}
 .portada .centro{display:grid;justify-items:center;gap:14px;margin-block:clamp(28px,5vw,56px)}
 .portada .foto{width:min(260px,60vw);aspect-ratio:4/5}
-.portada .centro p{margin:0;text-align:center;font-size:14px;max-width:24ch}
+.portada .centro p{margin:0;text-align:center}
+.portada .claim{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1;letter-spacing:.01em;margin-top:10px!important;text-wrap:balance}
+.portada .tipos{font-size:15px;font-weight:500;max-width:46ch;line-height:1.5}
+.btn-grande{padding:16px 26px;font-size:16px;margin-top:8px}
+.portada .postdata{font-size:13px;color:var(--gris)}
+.portada .lema{font-family:var(--mano);font-size:24px;line-height:1.1;transform:rotate(-2deg);margin-top:14px!important}
 .portada .bajo{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;font-size:13px}
 .portada .bajo p{margin:0}
 .portada .bajo .der{text-align:right;color:var(--gris)}
@@ -220,14 +225,18 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 <main>
   <!-- ✏️ EDITA AQUÍ: PORTADA. La foto es img/portada.jpg -->
   <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
-    <h1 class="gigante">Culthouse</h1>
+    <h1 class="gigante">Culthouse<span class="sr">, productora audiovisual en Madrid</span></h1>
     <div class="centro">
       <div class="foto"><span>Fotograma del showreel</span><img src="img/portada.jpg" alt="" onerror="this.remove()"></div>
-      <p>Cine, documental y comunicación hechos para no caducar</p>
+      <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
+      <p class="tipos">Spots · Vídeo corporativo · Eventos · Podcast y videopodcast · Reels · Videoclips</p>
+      <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+      <p class="postdata">o mándanos un audio contándonos tu idea, que también nos vale</p>
+      <p class="lema">cine, documental y comunicación hechos para no caducar</p>
     </div>
     <div class="bajo">
       <p>Productora audiovisual</p>
-      <p class="der">Madrid y San Sebastián de los Reyes<br>Spots, vídeo corporativo, eventos, podcast, reels y videoclips</p>
+      <p class="der">Madrid</p>
     </div>
   </section>
 
@@ -359,7 +368,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a></span>
 </footer>
 
-<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+<style>.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}</style>
 <script>
 (function(){
   var escena=document.getElementById('escena'), nota=document.getElementById('nota');
