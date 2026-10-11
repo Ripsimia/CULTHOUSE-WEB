@@ -159,6 +159,10 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .acepto{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--gris);line-height:1.4}
 .acepto input{width:auto;margin-top:2px;accent-color:var(--tinta)}
 .acepto a{color:var(--tinta)}
+.aviso-form{display:grid;gap:10px;padding:16px;border:1px solid var(--tinta);margin-top:4px}
+.aviso-form p{margin:0;font-size:14px}
+.aviso-form .aviso-alt{color:var(--gris);font-size:13px}
+.aviso-form .btn{justify-self:start}
 /* Proyectos */
 .rejilla{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:clamp(32px,5vw,56px)}
 .obra{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px;padding:16px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);text-decoration:none;position:relative;overflow:hidden}
@@ -389,7 +393,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         <label for="f-msg" class="sr">Mensaje</label>
         <textarea id="f-msg" name="mensaje" rows="4" placeholder="Qué necesitas, para cuándo" required></textarea>
         <label class="acepto" for="f-acepto"><input type="checkbox" id="f-acepto" name="acepta_privacidad" value="sí" required> He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a></label>
-        <button type="submit">Enviar mensaje</button>
+        <button type="submit" id="f-enviar">Enviar mensaje</button>
+        <div class="aviso-form" id="f-aviso" hidden>
+          <p id="f-aviso-txt">No hemos podido enviar el formulario. A veces algunas conexiones bloquean el servicio de envío durante un rato.</p>
+          <a class="btn btn-lleno" id="f-wa" href="https://wa.me/34651129062" target="_blank" rel="noopener">Enviarlo por WhatsApp</a>
+          <p class="aviso-alt">O escríbenos a <strong>hey@culthouse.art</strong></p>
+        </div>
       </form>
     </div>
   </section>
@@ -444,6 +453,30 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   document.querySelectorAll('dialog.visor').forEach(function(d){
     d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-cierra'))d.close();});
   });
+  var form=document.getElementById('form');
+  if(form && window.fetch && window.FormData){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var btn=document.getElementById('f-enviar'), aviso=document.getElementById('f-aviso');
+      var fd=new FormData(form);
+      var texto='Hola, soy '+(fd.get('nombre')||'')+' ('+(fd.get('contacto')||'')+'). '+(fd.get('mensaje')||'');
+      document.getElementById('f-wa').href='https://wa.me/34651129062?text='+encodeURIComponent(texto);
+      btn.disabled=true; btn.textContent='Enviando…'; aviso.hidden=true;
+      var ctrl=window.AbortController?new AbortController():null;
+      var t=setTimeout(function(){ if(ctrl) ctrl.abort(); },10000);
+      fetch('https://formsubmit.co/ajax/hey@culthouse.art',{method:'POST',headers:{'Accept':'application/json'},body:fd,signal:ctrl?ctrl.signal:undefined})
+        .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+        .then(function(res){
+          clearTimeout(t);
+          if(res.ok && String(res.j.success)==='true'){ location.href='gracias.html'; return; }
+          throw new Error('no enviado');
+        })
+        .catch(function(){
+          clearTimeout(t);
+          btn.disabled=false; btn.textContent='Enviar mensaje'; aviso.hidden=false;
+        });
+    });
+  }
   var next=document.getElementById('f-next');
   if(next) next.value=new URL('gracias.html', location.href).href;
 })();
