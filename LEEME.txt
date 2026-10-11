@@ -18,7 +18,7 @@ Para subir o cambiar una foto desde GitHub: entra en la carpeta img >
 Add file > Upload files > arrastra la foto > Commit changes.
 
 FORMULARIO DE CONTACTO
-Los mensajes llegan a ripsimiamkr@hotmail.com a través de FormSubmit (gratis).
+Los mensajes llegan a hey@culthouse.art a través de FormSubmit (gratis).
 La primera vez llega un email de FormSubmit pidiendo confirmar: pulsa el enlace.
 Para cambiar el email de destino, busca en index.html "formsubmit.co/" y cambia
 la dirección que va detrás.
