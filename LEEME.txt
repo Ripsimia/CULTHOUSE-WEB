@@ -7,7 +7,7 @@ Cada cambio que se guarda aquí aparece en la web en uno o dos minutos.
 
 FOTOS
 Van en la carpeta "img" con estos nombres exactos (minúsculas, .jpg):
-  portada.jpg   fotograma del showreel (portada)
+  og-culthouse.jpg  imagen para Google y redes (1200x630)
   sima.jpg      retrato de Sima
   oscar.jpg     retrato de Oscar
   rodaje.jpg    foto de rodaje (Servicios)
