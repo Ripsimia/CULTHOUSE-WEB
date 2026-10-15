@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) - Google Ads. Modo de consentimiento: sin cookies por defecto -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16463809967"></script>
+<script>
+  gtag('js', new Date());
+  gtag('config', 'AW-16463809967');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- ✏️ EDITA AQUÍ: título y descripción que salen en Google y al compartir el enlace -->
@@ -487,6 +503,22 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var next=document.getElementById('f-next');
   if(next) next.value=new URL('gracias.html', location.href).href;
 })();
+</script>
+<!-- Conversión Google Ads: clic en WhatsApp, email o teléfono -->
+<script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    var tipo = /wa\.me|whatsapp/i.test(href) ? 'whatsapp'
+             : /^mailto:/i.test(href) ? 'email'
+             : /^tel:/i.test(href) ? 'telefono' : null;
+    if (!tipo) return;
+    gtag('event', 'conversion', {
+      'send_to': 'AW-16463809967/FeRrCJ7GlJ4dEK-bx6o9',
+      'event_label': tipo
+    });
+  });
 </script>
 </body>
 </html>
