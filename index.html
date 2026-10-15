@@ -168,6 +168,7 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .nota-mano span{font-family:var(--mano);font-size:clamp(20px,2.2vw,26px);line-height:1;transform:rotate(-4deg);white-space:nowrap}
 .nota-mano svg{width:64px;height:44px;margin-top:12px;transform:rotate(6deg)}
 .pie-foto{margin:10px 0 0;font-size:13px;color:var(--gris)}
+.nota-movil{display:none}
 .en-casa{margin-top:clamp(24px,3vw,36px);padding:22px 24px;border:1px solid var(--tinta);background:var(--tarjeta);position:relative;max-width:560px}
 .en-casa h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,2.6vw,34px);line-height:1;text-transform:uppercase;margin:0 0 10px}
 .en-casa p{margin:0 0 8px}
@@ -253,6 +254,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   .cab{border-bottom:0;padding:12px 16px;align-items:center}
   .menu{display:flex;gap:14px}
   .escena,.cta,.pie-lat{display:none}
+  .nota-movil{display:block;font-family:var(--mano);font-size:24px;line-height:1.05;color:var(--tinta);transform:rotate(-3deg);transform-origin:left;margin:14px 0 0 4px;max-width:30ch}
+  .serv .nota-movil{order:-1;grid-column:auto;margin-top:0}
   main,footer{margin-left:0}
   .portada h1{font-size:calc((100vw - 36px) / 2.65)}
   .nos,.serv,.cont{grid-template-columns:1fr}
@@ -509,6 +512,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 (function(){
   var escena=document.getElementById('escena'), nota=document.getElementById('nota');
   var secciones=[].slice.call(document.querySelectorAll('main section[data-nota]'));
+  secciones.forEach(function(sec){
+    var h=sec.querySelector('h2.gigante'); if(!h) return;
+    if(h.textContent.replace(/\s+/g,'').toLowerCase()===sec.dataset.nota.replace(/\s+/g,'').toLowerCase()) return;
+    var n=document.createElement('p'); n.className='nota-movil'; n.setAttribute('aria-hidden','true'); n.textContent=sec.dataset.nota;
+    h.insertAdjacentElement('afterend',n);
+  });
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
