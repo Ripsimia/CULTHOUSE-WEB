@@ -168,6 +168,27 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .nota-mano span{font-family:var(--mano);font-size:clamp(20px,2.2vw,26px);line-height:1;transform:rotate(-4deg);white-space:nowrap}
 .nota-mano svg{width:64px;height:44px;margin-top:12px;transform:rotate(6deg)}
 .pie-foto{margin:10px 0 0;font-size:13px;color:var(--gris)}
+.en-casa{margin-top:clamp(24px,3vw,36px);padding:22px 24px;border:1px solid var(--tinta);background:var(--tarjeta);position:relative;max-width:560px}
+.en-casa h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,2.6vw,34px);line-height:1;text-transform:uppercase;margin:0 0 10px}
+.en-casa p{margin:0 0 8px}
+.en-casa .mano{display:inline-block;font-family:var(--mano);font-size:22px;line-height:1;transform:rotate(-3deg);margin-top:6px}
+.porti{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.porti li{padding-left:0}
+.porti strong{font-weight:500}
+.pasos{list-style:none;margin:clamp(32px,5vw,64px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--tinta)}
+.pasos li{padding:20px 20px 24px 0;border-right:1px solid var(--linea);display:grid;gap:10px;align-content:start}
+.pasos li+li{padding-left:20px}
+.pasos li:last-child{border-right:0}
+.pasos .num{font-family:var(--display);font-weight:300;font-size:clamp(3rem,6vw,5.5rem);line-height:.8}
+.pasos h3{font-family:var(--display);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1;text-transform:uppercase;margin:0}
+.pasos p{margin:0}
+.faq{margin-top:clamp(32px,5vw,64px);border-top:1px solid var(--tinta);max-width:900px}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-family:var(--display);font-weight:500;font-size:clamp(19px,2vw,25px);line-height:1.05;text-transform:uppercase}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:300;font-size:1.3em;line-height:.8;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 20px;max-width:60ch}
 .serv .titulo2{grid-column:2}
 .serv .lista{display:grid;gap:14px;max-width:44ch}
 .serv .lista p{margin:0}
@@ -235,12 +256,19 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   main,footer{margin-left:0}
   .portada h1{font-size:calc((100vw - 36px) / 2.65)}
   .nos,.serv,.cont{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr 1fr}
+  .pasos li:nth-child(2){border-right:0}
+  .pasos li:nth-child(3){padding-left:0}
+  .pasos li:nth-child(n+3){border-top:1px solid var(--linea)}
   .serv .titulo2{grid-column:auto;order:-1}
   .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
   .mesa{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ficha:nth-child(5){grid-column:auto}
 }
 @media (max-width:520px){
+  .pasos{grid-template-columns:1fr}
+  .pasos li,.pasos li+li{padding:18px 0;border-right:0;border-top:1px solid var(--linea)}
+  .pasos li:first-child{border-top:0}
   .menu{gap:10px;font-size:12px}
   .menu li:first-child{display:none}
   .equipo{grid-template-columns:1fr}
@@ -249,6 +277,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuánto cuesta un vídeo?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de los días de rodaje, la duración y las versiones. Cuéntanos qué necesitas y te preparamos un presupuesto a medida."}}, {"@type": "Question", "name": "¿Cuánto se tarda?", "acceptedAnswer": {"@type": "Answer", "text": "Una pieza sencilla, unos días desde el rodaje. Un proyecto grande, unas semanas. Si tienes una fecha fija, dínosla desde el principio y nos organizamos."}}, {"@type": "Question", "name": "¿Puedo pedir cambios?", "acceptedAnswer": {"@type": "Answer", "text": "Claro. Cada presupuesto incluye 2 rondas de cambios. No paramos hasta que te guste."}}, {"@type": "Question", "name": "¿Grabáis fuera de Madrid?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. El estudio está en San Sebastián de los Reyes, pero la cámara viaja por toda España."}}, {"@type": "Question", "name": "¿La música tiene derechos?", "acceptedAnswer": {"@type": "Answer", "text": "Usamos música con licencia. Puedes publicar el vídeo donde quieras sin sustos."}}, {"@type": "Question", "name": "¿Me dais versiones para redes?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Horizontal para YouTube y la web, vertical para Instagram y TikTok. Dinos dónde lo vas a publicar y lo preparamos."}}, {"@type": "Question", "name": "¿Y si no sé muy bien lo que quiero?", "acceptedAnswer": {"@type": "Answer", "text": "Mejor. Para eso está la llamada de 15 minutos: le damos forma juntos."}}]}</script>
 </head>
 <body>
 
@@ -298,9 +327,13 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     <h2 class="gigante">Nosotros</h2>
     <div class="nos">
       <div class="texto">
-        <p>CULTHOUSE se construye sobre el esfuerzo, la autenticidad y una ejecución decidida. Creamos trabajo con intención: limpio, seguro y pensado para durar.</p>
-        <p>Más que un estilo, es una forma de pensar basada en la precisión, la disciplina y en no conformarnos con lo corriente. Actuamos como verdaderos socios: nos implicamos a fondo, hacemos las preguntas adecuadas y damos forma a las ideas desde sus cimientos.</p>
-        <p>Quitamos ruido, nos centramos en lo que importa y construimos un trabajo honesto que deja huella. El resultado: con carácter sin ser estridente, auténtico sin ser forzado, atemporal por diseño.</p>
+        <p>Más de 20 años de oficio y unos 200 proyectos a la espalda. Montamos el equipo que pide cada historia: a veces tres personas, a veces treinta.</p>
+        <p><strong>Qué hacemos por ti:</strong></p>
+        <ul class="porti">
+          <li><strong>Escucharte primero.</strong> Antes de hablar de cámaras, queremos entender qué necesitas y para qué.</li>
+          <li><strong>Ponértelo fácil.</strong> Guion, permisos, rodaje, montaje: lo hacemos todo. Tú solo dices «me gusta».</li>
+          <li><strong>Decirte la verdad.</strong> Si algo no hace falta, te lo decimos.</li>
+        </ul>
       </div>
       <div class="datos">
         <div class="dato">Encargos para Roche, CaixaForum, Antena 3, Mahou, el Ministerio de Sanidad y Acción Cultural Española</div>
@@ -350,6 +383,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         </figcaption>
         <p class="pie-foto">Nuestro trabajo, en la pantalla grande.</p>
       </figure>
+      <div class="en-casa">
+        <h3>Todo en casa.</h3>
+        <p>Cámaras, luces y estudio de edición propios. Nada de alquilar, subcontratar ni esperar a terceros. Tu vídeo va más rápido y te cuesta menos.</p>
+        <p>Y lo rodamos con ojo de cine. Aunque sea el vídeo de la cena de empresa.</p>
+        <span class="mano">sí, también la cena de empresa</span>
+      </div>
       <div class="lista">
         <p>Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
         <ul class="formatos" aria-label="Qué grabamos">
@@ -372,6 +411,17 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
   </section>
 
+  <!-- ✏️ EDITA AQUÍ: CÓMO TRABAJAMOS. Cuatro pasos: cambia el título <h3> y el texto <p> de cada uno -->
+  <section id="proceso" data-nota="y si nos gustamos, repetimos">
+    <h2 class="gigante">Cómo<br>trabajamos</h2>
+    <ol class="pasos">
+      <li><span class="num">1</span><h3>Hablamos</h3><p>15 minutos, por teléfono o videollamada. Tú nos cuentas, nosotros escuchamos y apuntamos mucho.</p></li>
+      <li><span class="num">2</span><h3>Te mandamos el presupuesto</h3><p>A medida, claro y sin letra pequeña. ¿No encaja? Lo ajustamos.</p></li>
+      <li><span class="num">3</span><h3>Rodamos</h3><p>Llegamos con todo: cámara, luz, sonido y ganas. Tú solo tienes que estar. O ni eso.</p></li>
+      <li><span class="num">4</span><h3>Te lo entregamos</h3><p>Montado, con color y sonido, en los formatos que necesites. Con 2 rondas de cambios incluidas, para que quede como quieres.</p></li>
+    </ol>
+  </section>
+
   <!-- ✏️ EDITA AQUÍ: PROYECTOS. Para añadir uno, copia un bloque <a class="obra">…</a> entero y pégalo debajo. En href pon el enlace (Vimeo, YouTube) -->
   <section id="proyectos" data-nota="aquí podría ir tu proyecto">
     <h2 class="gigante">Proyectos</h2>
@@ -380,6 +430,20 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <a class="obra con-foto" style="--img:url(img/proyecto-la-movie.jpg)" href="#proyectos"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/proyecto-foq.jpg)" href="#proyectos"><span class="sello">Videoclip para Atresmedia</span><h3>FoQ: La nueva generación.<span>Homenaje a la mítica canción de la serie. Realizado por Oscar Morillas.</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/making-of-alicia.jpg)" href="#making-of" data-abre="making-of"><span class="sello">Croma + IA + Gaussian Splatting</span><h3>País de las Maravillas.<span>Rodaje en plató con croma y escenario creado con IA y Gaussian Splatting</span></h3><span class="ver-proceso">Ver en grande</span></a>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: PREGUNTAS FRECUENTES. Cada <details> es una pregunta (summary) con su respuesta (p) -->
+  <section id="preguntas" data-nota="pregunta, que no mordemos">
+    <h2 class="gigante">Preguntas<br>frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Cuánto cuesta un vídeo?</summary><p>Depende de los días de rodaje, la duración y las versiones. Cuéntanos qué necesitas y te preparamos un presupuesto a medida.</p></details>
+      <details><summary>¿Cuánto se tarda?</summary><p>Una pieza sencilla, unos días desde el rodaje. Un proyecto grande, unas semanas. Si tienes una fecha fija, dínosla desde el principio y nos organizamos.</p></details>
+      <details><summary>¿Puedo pedir cambios?</summary><p>Claro. Cada presupuesto incluye 2 rondas de cambios. No paramos hasta que te guste.</p></details>
+      <details><summary>¿Grabáis fuera de Madrid?</summary><p>Sí. El estudio está en San Sebastián de los Reyes, pero la cámara viaja por toda España.</p></details>
+      <details><summary>¿La música tiene derechos?</summary><p>Usamos música con licencia. Puedes publicar el vídeo donde quieras sin sustos.</p></details>
+      <details><summary>¿Me dais versiones para redes?</summary><p>Sí. Horizontal para YouTube y la web, vertical para Instagram y TikTok. Dinos dónde lo vas a publicar y lo preparamos.</p></details>
+      <details><summary>¿Y si no sé muy bien lo que quiero?</summary><p>Mejor. Para eso está la llamada de 15 minutos: le damos forma juntos.</p></details>
     </div>
   </section>
 
@@ -448,7 +512,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
-    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto'}[id]||'inicio';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios',preguntas:'proyectos'}[id]||'inicio';
     if(escena.dataset.s!==escenaId){
       escena.dataset.s=escenaId;
       if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
