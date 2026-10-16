@@ -9,7 +9,7 @@ FOTOS
 Van en la carpeta "img" con estos nombres exactos (minúsculas, .jpg):
   og-culthouse.jpg  imagen para Google y redes (1200x630)
   sima.jpg      retrato de Sima
-  oscar.jpg     retrato de Oscar
+  retrato-om-2026.jpg  retrato de Oscar
   rodaje.jpg    foto de rodaje (Servicios)
   equipo.jpg    foto de los dos (Contacto)
 Si falta alguna, en su sitio sale un recuadro gris. Mejor fotos verticales,

@@ -4,7 +4,7 @@ Disallow: /gracias.html
 
 # Que Google no use los retratos como miniatura en los resultados
 User-agent: Googlebot-Image
-Disallow: /img/oscar.jpg
+Disallow: /img/retrato-om-2026.jpg
 Disallow: /img/sima.jpg
 Disallow: /img/equipo.jpg
 
