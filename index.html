@@ -183,13 +183,6 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .pasos .num{font-family:var(--display);font-weight:300;font-size:clamp(3rem,6vw,5.5rem);line-height:.8}
 .pasos h3{font-family:var(--display);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1;text-transform:uppercase;margin:0}
 .pasos p{margin:0}
-.faq{margin-top:clamp(32px,5vw,64px);border-top:1px solid var(--tinta);max-width:900px}
-.faq details{border-bottom:1px solid var(--linea)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-family:var(--display);font-weight:500;font-size:clamp(19px,2vw,25px);line-height:1.05;text-transform:uppercase}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-weight:300;font-size:1.3em;line-height:.8;transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0 0 20px;max-width:60ch}
 .serv .titulo2{grid-column:2}
 .serv .lista{display:grid;gap:14px;max-width:44ch}
 .serv .lista p{margin:0}
@@ -280,7 +273,6 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cuánto cuesta un vídeo?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de los días de rodaje, la duración y las versiones. Cuéntanos qué necesitas y te preparamos un presupuesto a medida."}}, {"@type": "Question", "name": "¿Cuánto se tarda?", "acceptedAnswer": {"@type": "Answer", "text": "Una pieza sencilla, unos días desde el rodaje. Un proyecto grande, unas semanas. Si tienes una fecha fija, dínosla desde el principio y nos organizamos."}}, {"@type": "Question", "name": "¿Puedo pedir cambios?", "acceptedAnswer": {"@type": "Answer", "text": "Claro. Cada presupuesto incluye 2 rondas de cambios. No paramos hasta que te guste."}}, {"@type": "Question", "name": "¿Grabáis fuera de Madrid?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. El estudio está en San Sebastián de los Reyes, pero la cámara viaja por toda España."}}, {"@type": "Question", "name": "¿La música tiene derechos?", "acceptedAnswer": {"@type": "Answer", "text": "Usamos música con licencia. Puedes publicar el vídeo donde quieras sin sustos."}}, {"@type": "Question", "name": "¿Me dais versiones para redes?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Horizontal para YouTube y la web, vertical para Instagram y TikTok. Dinos dónde lo vas a publicar y lo preparamos."}}, {"@type": "Question", "name": "¿Y si no sé muy bien lo que quiero?", "acceptedAnswer": {"@type": "Answer", "text": "Mejor. Para eso está la llamada de 15 minutos: le damos forma juntos."}}]}</script>
 </head>
 <body>
 
@@ -436,20 +428,6 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: PREGUNTAS FRECUENTES. Cada <details> es una pregunta (summary) con su respuesta (p) -->
-  <section id="preguntas" data-nota="no hay preguntas tontas">
-    <h2 class="gigante">Preguntas<br>frecuentes</h2>
-    <div class="faq">
-      <details><summary>¿Cuánto cuesta un vídeo?</summary><p>Depende de los días de rodaje, la duración y las versiones. Cuéntanos qué necesitas y te preparamos un presupuesto a medida.</p></details>
-      <details><summary>¿Cuánto se tarda?</summary><p>Una pieza sencilla, unos días desde el rodaje. Un proyecto grande, unas semanas. Si tienes una fecha fija, dínosla desde el principio y nos organizamos.</p></details>
-      <details><summary>¿Puedo pedir cambios?</summary><p>Claro. Cada presupuesto incluye 2 rondas de cambios. No paramos hasta que te guste.</p></details>
-      <details><summary>¿Grabáis fuera de Madrid?</summary><p>Sí. El estudio está en San Sebastián de los Reyes, pero la cámara viaja por toda España.</p></details>
-      <details><summary>¿La música tiene derechos?</summary><p>Usamos música con licencia. Puedes publicar el vídeo donde quieras sin sustos.</p></details>
-      <details><summary>¿Me dais versiones para redes?</summary><p>Sí. Horizontal para YouTube y la web, vertical para Instagram y TikTok. Dinos dónde lo vas a publicar y lo preparamos.</p></details>
-      <details><summary>¿Y si no sé muy bien lo que quiero?</summary><p>Mejor. Para eso está la llamada de 15 minutos: le damos forma juntos.</p></details>
-    </div>
-  </section>
-
   <!-- ✏️ EDITA AQUÍ: CONTACTO. El email visible está en <strong>. El formulario envía a la dirección que aparece en action="https://formsubmit.co/…". Foto: img/equipo.jpg -->
   <section class="contacto" id="contacto" data-nota="cuéntanos, la casa ya se está girando">
     <div class="cont">
@@ -521,7 +499,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
-    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios',preguntas:'proyectos'}[id]||'inicio';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios'}[id]||'inicio';
     if(escena.dataset.s!==escenaId){
       escena.dataset.s=escenaId;
       if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
