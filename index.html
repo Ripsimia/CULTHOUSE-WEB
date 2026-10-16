@@ -212,10 +212,11 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .obra:hover,.obra:hover .sello,.obra:hover h3 span{color:var(--papel)}
 
 .obra{grid-column:span 2}
-.obra.con-foto{background:var(--img) top center/100% auto no-repeat;padding-top:calc(56.25% + 16px);gap:20px;justify-content:flex-start;transition:background-size .5s}
-.obra.con-foto:hover{background-size:104% auto}
+.obra.con-foto{padding-top:calc(56.25% + 16px);gap:20px;justify-content:flex-start}
+.obra.con-foto::before{content:"";position:absolute;left:0;right:0;top:0;aspect-ratio:16/9;background:var(--img) center/100% auto no-repeat;transition:background-size .5s}
+.obra.con-foto:hover::before{background-size:104% auto}
 .obra.con-foto::after{display:none}
-.obra.antes-despues:hover{background-image:var(--img2);background-size:100% auto}
+.obra.antes-despues:hover::before{background-image:var(--img2)}
 .obra .pista{font-style:normal;opacity:.8}
 @media (hover:none){.obra .pista{display:none}}
 .ver-proceso{font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:4px}
@@ -421,6 +422,19 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </ol>
   </section>
 
+  <!-- ✏️ EDITA AQUÍ: PARA EMPRESAS. Cada <a class="obra"> es un vídeo de YouTube: cambia el código del vídeo en href, data-video y la imagen -->
+  <section id="empresas" data-nota="sí, también hacemos vídeos serios">
+    <h2 class="gigante">Para<br>empresas</h2>
+    <div class="rejilla">
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/MNcbGWQww9Q/maxresdefault.jpg)" href="https://youtu.be/MNcbGWQww9Q" target="_blank" rel="noopener" data-video="MNcbGWQww9Q"><span class="sello">Vídeo para Acción Cultural Española</span><h3>Bienal del Libro 2026.<span>Proyectado en São Paulo ante más de 10.000 personas.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/CVEpfohp2TM/maxresdefault.jpg)" href="https://youtu.be/CVEpfohp2TM" target="_blank" rel="noopener" data-video="CVEpfohp2TM"><span class="sello">Evento para Mazda</span><h3>Crafted in Japan House.<span>Rodado y montado para contar la experiencia de principio a fin.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/D6yTd3EB0q8/maxresdefault.jpg)" href="https://youtu.be/D6yTd3EB0q8" target="_blank" rel="noopener" data-video="D6yTd3EB0q8"><span class="sello">Vídeo para Samsung</span><h3>Samsung.<span>Una pieza de marca con ritmo, gente real y cero postureo.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/qQvFKs4cko4/maxresdefault.jpg)" href="https://youtu.be/qQvFKs4cko4" target="_blank" rel="noopener" data-video="qQvFKs4cko4"><span class="sello">Evento para BYD</span><h3>BYD.<span>Lanzamiento del Dolphin Surf en Madrid, contado en unos minutos.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/8LEUbCdEfBM/sddefault.jpg)" href="https://youtu.be/8LEUbCdEfBM" target="_blank" rel="noopener" data-video="8LEUbCdEfBM"><span class="sello">Vídeo para La Casa de los Retos</span><h3>Gameplay 2025.<span>Su app, contada en vídeo.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/YQalo3AKCxg/maxresdefault.jpg)" href="https://youtu.be/YQalo3AKCxg" target="_blank" rel="noopener" data-video="YQalo3AKCxg"><span class="sello">Formación online</span><h3>Cursos online.<span>Grabados en plató y editados de principio a fin. Clases claras, bien iluminadas y que dan ganas de terminar.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+    </div>
+  </section>
+
   <!-- ✏️ EDITA AQUÍ: PROYECTOS. Para añadir uno, copia un bloque <a class="obra">…</a> entero y pégalo debajo. En href pon el enlace (Vimeo, YouTube) -->
   <section id="proyectos" data-nota="aquí podría ir tu proyecto">
     <h2 class="gigante">Proyectos</h2>
@@ -507,7 +521,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
-    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios'}[id]||'inicio';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios',empresas:'proyectos'}[id]||'inicio';
     if(escena.dataset.s!==escenaId){
       escena.dataset.s=escenaId;
       if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
