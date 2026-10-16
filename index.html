@@ -117,12 +117,26 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .portada h1{position:relative;font-size:min(24rem,calc((100vw - var(--lateral) - 84px) / 2.65));white-space:nowrap}
 .portada .centro{display:grid;justify-items:center;gap:14px;margin-block:clamp(28px,5vw,56px)}
 .portada .foto{width:min(260px,60vw);aspect-ratio:4/5}
-.portada{padding-top:0!important}
-.escenario{position:relative;margin-inline:calc(-1 * clamp(16px,3vw,40px));height:100svh;min-height:520px;overflow:hidden;background:#0b0b0a}
+.portada{padding-block:0!important}
+.escenario{position:relative;margin-inline:calc(-1 * clamp(16px,3vw,40px));aspect-ratio:16/9;min-height:620px;max-height:100svh;width:auto;overflow:hidden;background:#0b0b0a;color:#f1ece2;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:clamp(18px,3vw,40px) clamp(16px,3vw,40px) clamp(14px,2vw,24px)}
 .escenario video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.escenario::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 55%,rgba(0,0,0,.6))}
-.portada .escenario h1{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);z-index:2;margin:0;color:#f1ece2;text-shadow:0 2px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(6%);letter-spacing:.06em;transition:opacity 1.8s ease,transform 1.8s cubic-bezier(.2,.7,.2,1),letter-spacing 2.4s cubic-bezier(.2,.7,.2,1)}
+.escenario::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,0) 28%,rgba(0,0,0,0) 42%,rgba(0,0,0,.72) 78%,rgba(0,0,0,.85))}
+.escenario>*{position:relative;z-index:2}
+.portada .escenario h1{position:relative;margin:0;font-size:min(13rem,calc((100vw - var(--lateral)) * .2));color:#f1ece2;text-shadow:0 2px 40px rgba(0,0,0,.35);opacity:0;transform:translateY(-6%);letter-spacing:.06em;transition:opacity 1.8s ease,transform 1.8s cubic-bezier(.2,.7,.2,1),letter-spacing 2.4s cubic-bezier(.2,.7,.2,1)}
 .portada .escenario.titulo h1{opacity:1;transform:none;letter-spacing:-.01em}
+.escenario .capa{width:100%;display:grid;gap:clamp(10px,1.6vw,18px)}
+.portada .escenario .centro{margin:0;gap:10px}
+.portada .escenario .claim{font-size:clamp(22px,2.3vw,32px);margin-top:0!important}
+.portada .escenario .tipos{font-size:14px}
+.escenario .btn-grande{padding:13px 22px;font-size:15px;margin-top:4px}
+.portada .escenario .lema{font-size:21px}
+.escenario .tipos{color:#f1ece2}
+.escenario .postdata{color:rgba(241,236,226,.75)!important}
+.escenario .btn-lleno{background:#f1ece2;color:#161512;border-color:#f1ece2}
+.escenario .btn-lleno:hover{background:var(--luz);border-color:var(--luz);color:#161512}
+.portada .escenario .lema{margin-top:4px!important}
+.portada .escenario .bajo{color:rgba(241,236,226,.8)}
+.portada .escenario .bajo .der{color:rgba(241,236,226,.8)}
 .portada .centro p{margin:0;text-align:center}
 .portada .claim{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1;letter-spacing:.01em;margin-top:10px!important;text-wrap:balance}
 .portada .tipos{font-size:15px;font-weight:500;max-width:46ch;line-height:1.5}
@@ -259,7 +273,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   .cab{border-bottom:0;padding:12px 16px;align-items:center}
   .menu{display:flex;gap:14px}
   .escena,.cta,.pie-lat{display:none}
-  .escenario{height:calc(100svh - 64px);min-height:420px}
+  .escenario{aspect-ratio:auto;min-height:calc(100svh - 64px);max-height:none}
+  .portada .escenario h1{font-size:calc((100vw - 36px) / 2.65)}
   .nota-movil{display:block;font-family:var(--mano);font-size:24px;line-height:1.05;color:var(--tinta);transform:rotate(-3deg);transform-origin:left;margin:14px 0 0 4px;max-width:30ch}
   .serv .nota-movil{order:-1;grid-column:auto;margin-top:0}
   main,footer{margin-left:0}
@@ -317,17 +332,19 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         <source src="img/izbushka.mp4" type="video/mp4">
       </video>
       <h1 class="gigante">Culthouse<span class="sr">, productora audiovisual en Madrid</span></h1>
-    </div>
-    <div class="centro">
-      <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
-      <p class="tipos">Spots · Vídeo corporativo · Eventos · Podcast y videopodcast · Reels · Videoclips</p>
-      <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
-      <p class="postdata">o mándanos un audio contándonos tu idea, que también nos vale</p>
-      <p class="lema">cine, documental y comunicación hechos para no caducar</p>
-    </div>
-    <div class="bajo">
-      <p>Productora audiovisual</p>
-      <p class="der">Madrid</p>
+      <div class="capa">
+      <div class="centro">
+        <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
+        <p class="tipos">Spots · Vídeo corporativo · Eventos · Podcast y videopodcast · Reels · Videoclips</p>
+        <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+        <p class="postdata">o mándanos un audio contándonos tu idea, que también nos vale</p>
+        <p class="lema">cine, documental y comunicación hechos para no caducar</p>
+      </div>
+      <div class="bajo">
+        <p>Productora audiovisual</p>
+        <p class="der">Madrid</p>
+      </div>
+      </div>
     </div>
   </section>
 
