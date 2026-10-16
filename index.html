@@ -222,6 +222,10 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .visor{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);width:100%}
 .visor::backdrop{background:rgba(10,9,8,.88)}
 .visor img{display:block;width:100%;height:auto}
+.visor .marco{position:relative;aspect-ratio:16/9;background:#000}
+.visor .marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.visor-video{padding-top:48px;max-width:min(96vw,1200px)}
+.visor-video .cerrar{top:0;right:0;z-index:2}
 .visor .cerrar{position:absolute;top:10px;right:10px;padding:8px 14px;font-size:13px;background:#f1ece2;color:#161512;border:0;cursor:pointer}
 /* Contacto */
 .contacto{border-bottom:0}
@@ -423,7 +427,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     <div class="rejilla">
       <a class="obra con-foto" style="--img:url(img/proyecto-tierra-paz.jpg)" href="#proyectos"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/proyecto-la-movie.jpg)" href="#proyectos"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
-      <a class="obra con-foto" style="--img:url(img/proyecto-foq.jpg)" href="#proyectos"><span class="sello">Videoclip para Atresmedia</span><h3>FoQ: La nueva generación.<span>Homenaje a la mítica canción de la serie. Realizado por Oscar Morillas.</span></h3></a>
+      <a class="obra con-foto" style="--img:url(img/proyecto-foq.jpg)" href="https://youtu.be/L2MX8UpDI6k" target="_blank" rel="noopener" data-video="L2MX8UpDI6k"><span class="sello">Videoclip para Atresmedia</span><h3>FoQ: La nueva generación.<span>Homenaje a la mítica canción de la serie. Realizado por Oscar Morillas.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
       <a class="obra con-foto" style="--img:url(img/making-of-alicia.jpg)" href="#making-of" data-abre="making-of"><span class="sello">Croma + IA + Gaussian Splatting</span><h3>País de las Maravillas.<span>Rodaje en plató con croma y escenario creado con IA y Gaussian Splatting</span></h3><span class="ver-proceso">Ver en grande</span></a>
     </div>
   </section>
@@ -479,6 +483,10 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <button type="button" class="cerrar" data-cierra>Cerrar</button>
   <img src="img/making-of-alicia.jpg" alt="Proceso en 5 pasos: rodaje en croma, máscara del personaje, personaje recortado, escenario generado con IA y Gaussian Splatting, y composición final en el País de las Maravillas" loading="lazy">
 </dialog>
+<dialog id="visor-video" class="visor visor-video" aria-label="Vídeo">
+  <button type="button" class="cerrar" data-cierra>Cerrar</button>
+  <div class="marco"></div>
+</dialog>
 
 <footer>
   <span>© 2026 CULT HOUSE MEDIA, S.L. · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></span>
@@ -524,6 +532,16 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   document.querySelectorAll('[data-abre]').forEach(function(a){
     a.addEventListener('click',function(e){var d=document.getElementById(a.getAttribute('data-abre'));if(d&&d.showModal){e.preventDefault();d.showModal();}});
   });
+  var vv=document.getElementById('visor-video');
+  document.querySelectorAll('[data-video]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(!vv||!vv.showModal) return;
+      e.preventDefault();
+      vv.querySelector('.marco').innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+a.getAttribute('data-video')+'?autoplay=1&rel=0" title="Vídeo" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      vv.showModal();
+    });
+  });
+  if(vv) vv.addEventListener('close',function(){vv.querySelector('.marco').innerHTML='';});
   document.querySelectorAll('dialog.visor').forEach(function(d){
     d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-cierra'))d.close();});
   });
