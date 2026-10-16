@@ -169,6 +169,8 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .nota-mano svg{width:64px;height:44px;margin-top:12px;transform:rotate(6deg)}
 .pie-foto{margin:10px 0 0;font-size:13px;color:var(--gris)}
 .nota-movil{display:none}
+.subtitulo{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(28px,3.4vw,44px);line-height:1;margin:clamp(40px,6vw,80px) 0 0}
+#proyectos .subtitulo+.rejilla{margin-top:clamp(20px,3vw,32px)}
 .intro-seccion{margin:clamp(16px,2vw,24px) 0 0;max-width:46ch;font-size:18px;line-height:1.45}
 .en-casa{margin-top:clamp(24px,3vw,36px);padding:22px 24px;border:1px solid var(--tinta);background:var(--tarjeta);position:relative;max-width:560px}
 .en-casa h3{font-family:var(--display);font-weight:500;font-size:clamp(26px,2.6vw,34px);line-height:1;text-transform:uppercase;margin:0 0 10px}
@@ -423,9 +425,10 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </ol>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: TRAS LA PUERTA (vídeos para clientes). Cada <a class="obra"> es un vídeo de YouTube: cambia el código del vídeo en href, data-video y la imagen -->
-  <section id="empresas" data-nota="cuidado, que muerde (es broma)">
-    <h2 class="gigante">Tras<br>la puerta</h2>
+  <!-- ✏️ EDITA AQUÍ: PROYECTOS. Arriba, trabajos para clientes (Tras la puerta); abajo, proyectos propios. Cada <a class="obra"> es una tarjeta: cópiala entera para añadir otra. Para un vídeo de YouTube cambia su código en href, data-video y la imagen -->
+  <section id="proyectos" data-nota="aquí podría ir tu proyecto">
+    <h2 class="gigante">Proyectos</h2>
+    <h3 class="subtitulo">Tras la puerta</h3>
     <p class="intro-seccion">Dicen que si le pides a la casa que dé la espalda al bosque, se gira y te abre la puerta. Pasa.</p>
     <div class="rejilla">
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/MNcbGWQww9Q/maxresdefault.jpg)" href="https://youtu.be/MNcbGWQww9Q" target="_blank" rel="noopener" data-video="MNcbGWQww9Q"><span class="sello">Vídeo para Acción Cultural Española</span><h3>Bienal del Libro 2026.<span>Proyectado en São Paulo ante más de 10.000 personas.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
@@ -435,11 +438,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/8LEUbCdEfBM/sddefault.jpg)" href="https://youtu.be/8LEUbCdEfBM" target="_blank" rel="noopener" data-video="8LEUbCdEfBM"><span class="sello">Vídeo para La Casa de los Retos</span><h3>Gameplay 2025.<span>Su app, contada en vídeo.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/YQalo3AKCxg/maxresdefault.jpg)" href="https://youtu.be/YQalo3AKCxg" target="_blank" rel="noopener" data-video="YQalo3AKCxg"><span class="sello">Formación online</span><h3>Curso de psicología.<span>Grabado en plató y editado de principio a fin. Clases claras, bien iluminadas y que dan ganas de terminar.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
     </div>
-  </section>
-
-  <!-- ✏️ EDITA AQUÍ: PROYECTOS. Para añadir uno, copia un bloque <a class="obra">…</a> entero y pégalo debajo. En href pon el enlace (Vimeo, YouTube) -->
-  <section id="proyectos" data-nota="aquí podría ir tu proyecto">
-    <h2 class="gigante">Proyectos</h2>
+    <h3 class="subtitulo">Y lo que cocinamos en casa</h3>
     <div class="rejilla">
       <a class="obra con-foto" style="--img:url(img/proyecto-tierra-paz.jpg)" href="#proyectos"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/proyecto-la-movie.jpg)" href="#proyectos"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
@@ -523,7 +522,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
-    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios',empresas:'proyectos'}[id]||'inicio';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios'}[id]||'inicio';
     if(escena.dataset.s!==escenaId){
       escena.dataset.s=escenaId;
       if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
