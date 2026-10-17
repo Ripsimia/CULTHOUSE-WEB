@@ -159,7 +159,9 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .persona h3{font-family:var(--display);font-weight:500;font-size:28px;line-height:1;margin:16px 0 4px;text-transform:uppercase}
 .persona .rol{margin:0 0 6px;color:var(--gris)}
 .persona p{margin:0;max-width:40ch;font-size:14px}
-.persona .mas-oscar{margin-top:10px}.persona .mas-oscar a{font-size:14px;text-underline-offset:3px}
+.persona .mas-oscar{margin-top:14px}
+.invita-oscar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:clamp(40px,6vw,72px);padding:clamp(20px,3vw,32px);border:1px solid var(--linea);background:var(--tarjeta)}
+.invita-oscar p{margin:0;max-width:60ch;font-size:16px;line-height:1.5}
 
 /* Clientes */
 .clientes{padding-block:clamp(48px,7vw,96px)}
@@ -295,8 +297,9 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   .pasos{grid-template-columns:1fr}
   .pasos li,.pasos li+li{padding:18px 0;border-right:0;border-top:1px solid var(--linea)}
   .pasos li:first-child{border-top:0}
-  .menu{gap:10px;font-size:12px}
-  .menu li:first-child{display:none}
+  .cab{flex-wrap:wrap;row-gap:8px;padding:10px 16px}
+  .menu{width:100%;justify-content:space-between;gap:0;font-size:13px}
+  .escenario{min-height:calc(100svh - 92px)}
   .equipo{grid-template-columns:1fr}
   .cont .izq{grid-template-columns:1fr}
   .obra{min-height:170px}
@@ -381,7 +384,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         <h3>Oscar Morillas</h3>
         <p class="rol">Realizador y director</p>
         <p>Dirige, realiza y rueda. Más de 15 años detrás de la cámara.</p>
-        <p class="mas-oscar"><a href="oscar.html">Mira lo que ha hecho →</a></p>
+        <p class="mas-oscar"><a class="btn btn-lleno" href="oscar.html">Mira lo que ha hecho Oscar →</a></p>
       </article>
     </div>
   </section>
@@ -470,6 +473,10 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <a class="obra con-foto" style="--img:url(img/proyecto-tierra-paz.jpg)" href="#proyectos"><span class="sello">En festivales</span><h3>Y en la Tierra Paz.<span>Cortometraje, comedia negra</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/proyecto-la-movie.jpg)" href="#proyectos"><span class="sello">En desarrollo</span><h3>LA MOVIE.<span>Documental sobre mujeres en la música urbana</span></h3></a>
       <a class="obra con-foto" style="--img:url(img/making-of-alicia.jpg)" href="#making-of" data-abre="making-of"><span class="sello">Croma + IA + Gaussian Splatting</span><h3>País de las Maravillas.<span>Rodaje en plató con croma y escenario creado con IA y Gaussian Splatting</span></h3><span class="ver-proceso">Ver en grande</span></a>
+    </div>
+    <div class="invita-oscar">
+      <p><strong>Antes de CULTHOUSE, Oscar ya montaba cine y rodaba anuncios.</strong> Películas para Warner y SkyShowtime, un documental para Netflix, spots para Burger King y Movistar+. Es su trabajo personal y lo tiene todo en su propia página.</p>
+      <a class="btn btn-lleno" href="oscar.html">Mira lo que ha hecho Oscar →</a>
     </div>
   </section>
 
