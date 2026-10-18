@@ -385,7 +385,7 @@ a.obra.cartel:hover::before{transform:scale(1.03)}
 
 <footer>
   <span>© 2026 CULT HOUSE MEDIA, S.L. · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></span>
-  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a></span>
+  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+34651129062">+34 651 129 062</a></span>
 </footer>
 
 <style>.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}</style>
@@ -416,11 +416,12 @@ a.obra.cartel:hover::before{transform:scale(1.03)}
     },{rootMargin:'-45% 0px -50% 0px'});
     secciones.forEach(function(s){io.observe(s)});
   }
-  var cp=document.getElementById('copiar');
-  if(cp) cp.addEventListener('click',function(){
-    var t='sima@culthouse.art';
-    function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
-    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  document.querySelectorAll('.copiar').forEach(function(cp){
+    cp.addEventListener('click',function(){
+      var t=cp.getAttribute('data-copia')||'sima@culthouse.art';
+      function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+    });
   });
   var vp=document.getElementById('video-portada');
   var esc=document.getElementById('escenario');

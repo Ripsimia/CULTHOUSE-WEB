@@ -494,8 +494,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
             <a class="btn" href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a>
           </div>
           <p class="correo">
+            <span>Teléfono:</span> <a href="tel:+34651129062">+34 651 129 062</a>
+            <button type="button" class="copiar" data-copia="+34 651 129 062">Copiar</button>
+          </p>
+          <p class="correo">
             <span>Email:</span> <a href="mailto:sima@culthouse.art" id="correo">sima@culthouse.art</a>
-            <button type="button" class="copiar" id="copiar">Copiar</button>
+            <button type="button" class="copiar" id="copiar" data-copia="sima@culthouse.art">Copiar</button>
           </p>
           </div>
         </div>
@@ -538,7 +542,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 
 <footer>
   <span>© 2026 CULT HOUSE MEDIA, S.L. · <a href="aviso-legal.html">Aviso legal</a> · <a href="privacidad.html">Política de privacidad</a></span>
-  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a></span>
+  <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+34651129062">+34 651 129 062</a></span>
 </footer>
 
 <style>.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}</style>
@@ -569,11 +573,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     },{rootMargin:'-45% 0px -50% 0px'});
     secciones.forEach(function(s){io.observe(s)});
   }
-  var cp=document.getElementById('copiar');
-  if(cp) cp.addEventListener('click',function(){
-    var t='sima@culthouse.art';
-    function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
-    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+  document.querySelectorAll('.copiar').forEach(function(cp){
+    cp.addEventListener('click',function(){
+      var t=cp.getAttribute('data-copia')||'sima@culthouse.art';
+      function ok(){cp.textContent='Copiado';setTimeout(function(){cp.textContent='Copiar'},2000)}
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,function(){})}
+    });
   });
   var vp=document.getElementById('video-portada');
   var esc=document.getElementById('escenario');
