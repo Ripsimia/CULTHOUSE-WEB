@@ -454,12 +454,16 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </div>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: PUBLI CON IA. Vídeo de YouTube en bucle y sin sonido: cambia el código w2ZCwIAzixA (aparece dos veces en el src) -->
+  <!-- ✏️ EDITA AQUÍ: PUBLI CON IA. Vídeo en bucle y sin sonido: img/publi-ia.mp4 (ordenador), img/publi-ia-720.mp4 (móvil), imagen fija img/publi-ia.jpg. En YouTube: https://youtu.be/w2ZCwIAzixA -->
   <section id="publi-ia" data-nota="¿cuánto costaría rodar esto de verdad? te sorprendería">
     <h2 class="gigante">Publi con IA</h2>
     <p class="ia-claim">Ahorra tiempo y dinero. Los límites, olvídalos.</p>
     <div class="ia-video">
-      <iframe src="https://www.youtube-nocookie.com/embed/w2ZCwIAzixA?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=w2ZCwIAzixA&amp;controls=0&amp;rel=0&amp;playsinline=1&amp;modestbranding=1" title="Publicidad con IA de CULTHOUSE" allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+      <video id="video-ia" autoplay muted loop playsinline preload="metadata" poster="img/publi-ia.jpg" aria-label="Secuencia de publicidad creada con IA por CULTHOUSE">
+        <source src="img/publi-ia-720.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source src="img/publi-ia.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="ia-sonido" id="ia-sonido" aria-pressed="false">Con sonido</button>
     </div>
     <div class="ia-texto">
       <p class="ia-grande">Rodar esta secuencia de verdad supondría localizaciones, permisos, viajes y semanas de producción. Con IA, una parte de ese presupuesto y en mucho menos tiempo. Te sorprendería la diferencia.</p>
@@ -610,7 +614,9 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 /* Publi con IA */
 .ia-claim{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1;margin:clamp(16px,2vw,24px) 0 0}
 .ia-video{position:relative;aspect-ratio:16/9;background:#000;margin-top:clamp(24px,3vw,40px);overflow:hidden;box-shadow:0 0 0 1px var(--linea),0 24px 60px -24px rgba(0,0,0,.55)}
-.ia-video iframe{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);border:0;pointer-events:none}
+.ia-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ia-sonido{position:absolute;right:14px;bottom:14px;z-index:2;background:rgba(19,18,16,.7);color:#f1ece2;border:1px solid rgba(241,236,226,.5);padding:8px 14px;font-size:13px}
+.ia-sonido:hover{background:var(--luz);color:#161512;border-color:var(--luz)}
 .ia-texto{display:grid;gap:12px;max-width:60ch;margin-top:clamp(24px,3vw,36px)}
 .ia-texto p{margin:0}
 .ia-grande{font-size:18px;line-height:1.45;font-weight:400}
@@ -729,6 +735,13 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     },true);
     puerta.addEventListener('click',function(e){
       if(e.target===puerta || e.target.closest('[data-cierra]')) puerta.close();
+    });
+  }
+  var via=document.getElementById('video-ia'), son=document.getElementById('ia-sonido');
+  if(via && son){
+    son.addEventListener('click',function(){
+      via.muted=!via.muted; if(!via.muted){via.currentTime=0; via.play();}
+      son.textContent=via.muted?'Con sonido':'Sin sonido'; son.setAttribute('aria-pressed',String(!via.muted));
     });
   }
   var next=document.getElementById('f-next');
