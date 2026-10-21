@@ -350,7 +350,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <div class="centro">
         <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
         <p class="tipos">Spots · Vídeo corporativo · Eventos · Podcast y videopodcast · Reels · Videoclips</p>
-        <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+        <a class="btn btn-lleno btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+        <a class="btn btn-lleno btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
         <p class="postdata">o mándanos un audio contándonos tu idea, que también nos vale</p>
         <p class="lema">cine, documental y comunicación hechos para no caducar</p>
       </div>
@@ -540,6 +541,18 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 <a class="flotante" href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">WhatsApp</a>
 
 
+<!-- ✏️ EDITA AQUÍ: VENTANA «LLAMA A LA PUERTA» (solo ordenador). Se abre con el botón de la portada y con cualquier enlace de WhatsApp. QR: img/qr-whatsapp.svg -->
+<dialog id="puerta" class="puerta" aria-labelledby="puerta-hechizo">
+  <button type="button" class="cerrar-puerta" data-cierra aria-label="Cerrar">×</button>
+  <span class="logo gira" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>
+  <p class="hechizo" id="puerta-hechizo">CULTHOUSE, CULTHOUSE: da la espalda al bosque y ábreme la puerta</p>
+  <p class="puerta-txt">La casa ya se está girando. Escanea el código con tu móvil y escríbenos por WhatsApp.</p>
+  <img class="qr" src="img/qr-whatsapp.svg" alt="Código QR para escribir a CULTHOUSE por WhatsApp" width="180" height="180">
+  <p class="correo"><span>¿Mejor por email?</span> <a href="mailto:sima@culthouse.art">sima@culthouse.art</a> <button type="button" class="copiar" data-copia="sima@culthouse.art">Copiar</button></p>
+  <p class="correo"><span>¿O prefieres llamar?</span> <a href="tel:+34651129062">651 129 062</a></p>
+  <p class="puerta-alt"><a href="#contacto" data-cierra>o déjanos un mensaje aquí →</a></p>
+</dialog>
+
 <dialog id="making-of" class="visor" aria-label="Making of: cómo creamos el fondo">
   <button type="button" class="cerrar" data-cierra>Cerrar</button>
   <img src="img/making-of-alicia.jpg" alt="Proceso en 5 pasos: rodaje en croma, máscara del personaje, personaje recortado, escenario generado con IA y Gaussian Splatting, y composición final en el País de las Maravillas" loading="lazy">
@@ -554,6 +567,25 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <span><a href="https://www.instagram.com/culthouse_media/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34651129062?text=Hola%2C%20os%20escribo%20desde%20la%20web%20de%20CULTHOUSE" target="_blank" rel="noopener">WhatsApp</a> · <a href="tel:+34651129062">+34 651 129 062</a></span>
 </footer>
 
+<style>
+/* Llama a la puerta: en ordenador el botón abre la ventana; en móvil va directo a WhatsApp */
+.solo-pc{display:none}
+@media (hover:hover) and (pointer:fine) and (min-width:901px){.solo-pc{display:inline-block}.solo-movil{display:none}}
+.puerta{border:1px solid var(--tinta);background:var(--papel);color:var(--tinta);padding:34px 34px 26px;max-width:420px;width:calc(100vw - 32px);text-align:center}
+.puerta::backdrop{background:rgba(10,9,8,.78)}
+.puerta[open]{display:grid;justify-items:center;gap:12px}
+.puerta .logo{width:92px}
+.puerta[open] .gira{animation:girar 1.4s cubic-bezier(.6,0,.2,1) both}
+@keyframes girar{0%{transform:scaleX(-1)}45%{transform:scaleX(.05)}100%{transform:scaleX(1)}}
+.hechizo{font-family:var(--mano);font-size:27px;line-height:1.05;margin:0;transform:rotate(-2deg);max-width:22ch}
+.puerta-txt{margin:0;font-size:14px;max-width:34ch}
+.qr{background:#fff;padding:8px;width:180px;height:180px;border:1px solid var(--linea)}
+.puerta .correo{margin:0!important;justify-content:center}
+.puerta-alt{margin:4px 0 0;font-size:13px}
+.puerta-alt a{color:var(--gris)}
+.cerrar-puerta{position:absolute;top:6px;right:8px;background:transparent;color:var(--tinta);font-size:24px;line-height:1;padding:6px 10px}
+.cerrar-puerta:hover{background:transparent;color:var(--luz)}
+</style>
 <style>.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}</style>
 <script>
 (function(){
@@ -640,6 +672,24 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
           clearTimeout(t);
           btn.disabled=false; btn.textContent='Enviar mensaje'; aviso.hidden=false;
         });
+    });
+  }
+  // Llama a la puerta: en ordenador, el botón y los enlaces de WhatsApp abren la ventana con QR, email y teléfono
+  var puerta=document.getElementById('puerta');
+  var esPC=window.matchMedia && matchMedia('(hover:hover) and (pointer:fine) and (min-width:901px)');
+  if(puerta && puerta.showModal){
+    window.addEventListener('click',function(e){
+      var a=e.target.closest && e.target.closest('a[href]');
+      if(!a || puerta.contains(a)) return;
+      var esBoton=a.hasAttribute('data-puerta');
+      var esWa=/wa\.me/i.test(a.getAttribute('href')) && a.id!=='f-wa';
+      if(!esBoton && !(esWa && esPC && esPC.matches)) return;
+      e.preventDefault(); e.stopPropagation();
+      puerta.showModal();
+      if(window.clarity) window.clarity('event','llama_a_la_puerta');
+    },true);
+    puerta.addEventListener('click',function(e){
+      if(e.target===puerta || e.target.closest('[data-cierra]')) puerta.close();
     });
   }
   var next=document.getElementById('f-next');
