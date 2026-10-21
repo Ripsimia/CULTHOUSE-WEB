@@ -435,6 +435,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         <p>Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
         <ul class="formatos" aria-label="Qué grabamos">
           <li>Publicidad y spots</li>
+          <li>Publi con IA</li>
           <li>Vídeo corporativo</li>
           <li>Eventos corporativos</li>
           <li>Podcast y videopodcast</li>
@@ -451,6 +452,28 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         </ul>
       </div>
     </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: PUBLI CON IA. Vídeo de YouTube en bucle y sin sonido: cambia el código w2ZCwIAzixA (aparece dos veces en el src) -->
+  <section id="publi-ia" data-nota="¿cuánto costaría rodar esto de verdad? te sorprendería">
+    <h2 class="gigante">Publi con IA</h2>
+    <p class="ia-claim">Ahorra tiempo y dinero. Los límites, olvídalos.</p>
+    <div class="ia-video">
+      <iframe src="https://www.youtube-nocookie.com/embed/w2ZCwIAzixA?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=w2ZCwIAzixA&amp;controls=0&amp;rel=0&amp;playsinline=1&amp;modestbranding=1" title="Publicidad con IA de CULTHOUSE" allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <div class="ia-texto">
+      <p class="ia-grande">Rodar esta secuencia de verdad supondría localizaciones, permisos, viajes y semanas de producción. Con IA, una parte de ese presupuesto y en mucho menos tiempo. Te sorprendería la diferencia.</p>
+      <p>Rodamos a personas reales en nuestro estudio y creamos con IA todo lo demás: escenarios, efectos, mundos enteros.</p>
+    </div>
+    <ul class="ia-puntos">
+      <li><strong>Menos rodaje, menos presupuesto.</strong> Un día de estudio en lugar de una semana de localizaciones.</li>
+      <li><strong>Escenarios imposibles.</strong> Si se puede imaginar, se puede rodar.</li>
+      <li><strong>Listo en unos días.</strong></li>
+    </ul>
+    <p class="ia-cta"><span class="mano">¿ya te lo estás imaginando?</span>
+      <a class="btn btn-lleno btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
+      <a class="btn btn-lleno btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20interesa%20la%20publi%20con%20IA" target="_blank" rel="noopener">Cuéntanos tu idea por WhatsApp</a>
+    </p>
   </section>
 
   <!-- ✏️ EDITA AQUÍ: CÓMO TRABAJAMOS. Cuatro pasos: cambia el título <h3> y el texto <p> de cada uno -->
@@ -584,6 +607,22 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 .puerta-alt{margin:4px 0 0;font-size:13px}
 .puerta-alt a{color:var(--gris)}
 .cerrar-puerta{position:absolute;top:6px;right:8px;background:transparent;color:var(--tinta);font-size:24px;line-height:1;padding:6px 10px}
+/* Publi con IA */
+.ia-claim{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1;margin:clamp(16px,2vw,24px) 0 0}
+.ia-video{position:relative;aspect-ratio:16/9;background:#000;margin-top:clamp(24px,3vw,40px);overflow:hidden;box-shadow:0 0 0 1px var(--linea),0 24px 60px -24px rgba(0,0,0,.55)}
+.ia-video iframe{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);border:0;pointer-events:none}
+.ia-texto{display:grid;gap:12px;max-width:60ch;margin-top:clamp(24px,3vw,36px)}
+.ia-texto p{margin:0}
+.ia-grande{font-size:18px;line-height:1.45;font-weight:400}
+.ia-puntos{list-style:none;margin:clamp(24px,3vw,36px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--tinta)}
+.ia-puntos li{padding:18px 20px 0 0;border-right:1px solid var(--linea)}
+.ia-puntos li+li{padding-left:20px}
+.ia-puntos li:last-child{border-right:0}
+.ia-puntos strong{display:block;font-family:var(--display);font-weight:500;font-size:clamp(20px,2vw,26px);line-height:1;text-transform:uppercase;margin-bottom:8px}
+.ia-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin:clamp(28px,4vw,48px) 0 0}
+.ia-cta .mano{font-family:var(--mano);font-size:24px;transform:rotate(-3deg);display:inline-block}
+.ia-cta .btn-grande{margin-top:0}
+@media (max-width:700px){.ia-puntos{grid-template-columns:1fr}.ia-puntos li,.ia-puntos li+li{padding:16px 0;border-right:0;border-top:1px solid var(--linea)}.ia-puntos li:first-child{border-top:0}}
 .cerrar-puerta:hover{background:transparent;color:var(--luz)}
 </style>
 <style>.sr{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}</style>
@@ -600,7 +639,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';
-    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios'}[id]||'inicio';
+    var escenaId={inicio:'inicio',nosotros:'nosotros',clientes:'nosotros',servicios:'servicios',proyectos:'proyectos',contacto:'contacto',proceso:'servicios','publi-ia':'servicios'}[id]||'inicio';
     if(escena.dataset.s!==escenaId){
       escena.dataset.s=escenaId;
       if(escenaId==='nosotros'||escenaId==='contacto'){escena.classList.add('camina');clearTimeout(activar.t);activar.t=setTimeout(function(){escena.classList.remove('camina')},2100);}
