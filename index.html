@@ -338,7 +338,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 </aside>
 
 <main>
-  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/izbushka.mp4 (ordenador) e img/izbushka-720.mp4 (móvil), se reproduce una vez y se queda en el último plano. Imágenes: izbushka-inicio.jpg y izbushka-final.jpg. CULTHOUSE aparece cuando se abre la puerta (segundo 5, en el script de abajo) -->
+  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/izbushka.mp4 (ordenador) e img/izbushka-720.mp4 (móvil), se reproduce una vez y se queda en el último plano. Imágenes: izbushka-inicio.jpg y izbushka-final.jpg. CULTHOUSE aparece cuando se abre la puerta (segundo 7,8, en el script de abajo) -->
   <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
     <div class="escenario" id="escenario">
       <video id="video-portada" autoplay muted playsinline preload="auto" poster="img/izbushka-inicio.jpg" aria-label="La casa del bosque se abre y deja ver el estudio de CULTHOUSE">
@@ -407,7 +407,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <div class="ficha">CaixaForum</div>
       <div class="ficha">Ministerio de Sanidad</div>
       <div class="ficha">Acción Cultural Española</div>
-      <div class="ficha">Antena 3</div>
+      <div class="ficha">ATRESplayer</div>
       <div class="ficha">Mahou</div>
       <div class="ficha">Aquí podría estar tu proyecto</div>
     </div>
@@ -498,7 +498,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     <p class="intro-seccion">Dicen que si le pides a la casa que dé la espalda al bosque, se gira y te abre la puerta. Pasa.</p>
     <div class="rejilla">
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/MNcbGWQww9Q/maxresdefault.jpg)" href="https://youtu.be/MNcbGWQww9Q" target="_blank" rel="noopener" data-video="MNcbGWQww9Q"><span class="sello">Vídeo para Acción Cultural Española</span><h3>Bienal del Libro 2026.<span>Proyectado en São Paulo ante más de 10.000 personas.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
-      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/CVEpfohp2TM/maxresdefault.jpg)" href="https://youtu.be/CVEpfohp2TM" target="_blank" rel="noopener" data-video="CVEpfohp2TM"><span class="sello">Evento para Mazda</span><h3>Crafted in Japan House.<span>Rodado y montado para contar la experiencia de principio a fin.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/CVEpfohp2TM/maxresdefault.jpg)" href="https://youtu.be/CVEpfohp2TM" target="_blank" rel="noopener" data-video="CVEpfohp2TM"><span class="sello">Evento para Mazda</span><h3>Crafted in Japan House.<span>Grabado para contar la experiencia de principio a fin.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/D6yTd3EB0q8/maxresdefault.jpg)" href="https://youtu.be/D6yTd3EB0q8" target="_blank" rel="noopener" data-video="D6yTd3EB0q8"><span class="sello">Vídeo para Samsung</span><h3>Samsung.<span>Una pieza de marca con ritmo, gente real y cero postureo.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/qQvFKs4cko4/maxresdefault.jpg)" href="https://youtu.be/qQvFKs4cko4" target="_blank" rel="noopener" data-video="qQvFKs4cko4"><span class="sello">Evento para BYD</span><h3>BYD.<span>Lanzamiento del Dolphin Surf en Madrid, contado en unos minutos.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
       <a class="obra con-foto" style="--img:url(img/proyecto-foq.jpg)" href="https://youtu.be/L2MX8UpDI6k" target="_blank" rel="noopener" data-video="L2MX8UpDI6k"><span class="sello">Videoclip para Atresmedia</span><h3>FoQ: La nueva generación.<span>Homenaje a la mítica canción de la serie. Realizado por Oscar Morillas.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
@@ -673,10 +673,10 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
       vp.removeAttribute('autoplay'); vp.pause(); vp.poster='img/izbushka-final.jpg'; titulo();
     } else {
-      vp.addEventListener('timeupdate',function(){ if(vp.currentTime>=5) titulo(); });
+      vp.addEventListener('timeupdate',function(){ if(vp.currentTime>=7.8) titulo(); });
       vp.addEventListener('ended',function(){ titulo(); });
       setTimeout(function(){ if(vp.paused||vp.readyState<2){ titulo(); } },2500);
-      setTimeout(titulo,9000);
+      setTimeout(titulo,11000);
     }
   } else { titulo(); }
   document.querySelectorAll('[data-abre]').forEach(function(a){
