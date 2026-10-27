@@ -367,6 +367,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .desp .sub .todos a{opacity:.7}
 @media (max-width:700px){.desp{position:static}.desp .sub{left:0;right:0;top:100%;min-width:0;padding:14px 16px 18px}}
 .portada-ev h1.gigante{font-size:clamp(3rem,6.2vw,6.4rem)}
+.foto-ev .pantalla{aspect-ratio:4/3}
+.foto-ev .pantalla img{object-fit:cover}
 .cortos{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:clamp(16px,3vw,32px);margin-top:clamp(24px,4vw,40px)}
 .corto{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
 .corto .img{display:block;aspect-ratio:9/16;background:#000 var(--img) center/cover no-repeat;box-shadow:0 0 0 1px var(--linea);margin-bottom:8px;transition:transform .3s}
@@ -392,7 +394,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 </header>
 
 <main>
-  <!-- ✏️ EDITA AQUÍ: CABECERA. Título grande, texto de entrada, nota a mano y foto (fotograma del videopodcast de BlackRock) -->
+  <!-- ✏️ EDITA AQUÍ: CABECERA. Título grande, texto de entrada, nota a mano y foto (img/podcast-entrevista.jpg) -->
   <section class="ev cabecera">
     <p class="miga"><a href="./">CULTHOUSE</a> · Servicios · Podcast y videopodcast</p>
     <div class="portada-ev">
@@ -401,7 +403,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
         <p class="nota-suelta">una buena conversación merece verse.<br>no solo oírse</p>
       </div>
       <figure class="proyeccion foto-ev">
-        <a class="pantalla" href="https://youtube.com/shorts/SLWHCMmuL2g" target="_blank" rel="noopener" data-video="SLWHCMmuL2g" aria-label="Ver el videopodcast para BlackRock"><img src="https://i.ytimg.com/vi/SLWHCMmuL2g/maxresdefault.jpg" alt="Fotograma de una entrevista en formato videopodcast grabada por CULTHOUSE para BlackRock" width="1280" height="720"><span class="play" aria-hidden="true">▶</span></a>
+        <div class="pantalla"><img src="img/podcast-entrevista.jpg" alt="Set de entrevista en formato videopodcast: dos sillones, lámpara de pie y mesa baja con luz cálida" width="1448" height="1086"></div>
         <figcaption class="nota-mano">
           <span>cuando habla el experto,<br>la cámara escucha</span>
           <svg viewBox="0 0 120 70" aria-hidden="true"><path d="M8 8 C 40 4, 78 18, 92 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M80 46 L93 56 L98 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
