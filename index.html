@@ -226,6 +226,38 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .aviso-form p{margin:0;font-size:14px}
 .aviso-form .aviso-alt{color:var(--gris);font-size:13px}
 .aviso-form .btn{justify-self:start}
+/* Servicios: cabecera, rejilla de servicios y "todo en casa" */
+.serv-cab{display:grid;gap:clamp(16px,2vw,24px)}
+.serv-cab .intro-seccion{margin:0;max-width:56ch}
+.serv-grid{list-style:none;margin:clamp(32px,5vw,56px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--tinta);border-left:1px solid var(--linea)}
+.serv-grid li{border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.serv-item{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 20px 18px;text-decoration:none;color:inherit;transition:background .25s,color .25s}
+.serv-item strong{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.2vw,30px);line-height:1;text-transform:uppercase}
+.serv-item span{font-size:14px;color:var(--gris)}
+.serv-item em{font-style:normal;font-size:13px;font-weight:500;margin-top:auto;padding-top:6px}
+.serv-item:hover{background:var(--tinta);color:var(--papel)}
+.serv-item:hover span{color:var(--papel);opacity:.75}
+.serv-casa{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-top:clamp(40px,6vw,80px)}
+.serv-casa .en-casa{margin-top:0;max-width:none}
+.serv-casa .servicios{margin-top:16px}
+/* Menú: desplegable de servicios */
+.desp-btn{background:none;border:0;padding:0;font:inherit;color:var(--gris);cursor:pointer;white-space:nowrap}
+.desp-btn::after{content:" ▾";font-size:.85em}
+.desp-btn:hover,.desp-btn[aria-expanded="true"]{background:none;color:var(--tinta)}
+.desp .sub{list-style:none;display:none;position:fixed;left:var(--lateral);top:12px;margin:0;padding:16px 26px 18px;min-width:260px;background:var(--tinta);text-align:left;z-index:40;box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.desp.abierto .sub{display:block}
+.desp .sub a{display:block;padding:7px 0;font-size:15px;color:var(--papel)}
+.desp .sub a:hover{color:var(--luz)}
+.desp .sub .todos a{color:var(--papel);opacity:.7}
+@media (max-width:900px){
+  .serv-casa{grid-template-columns:1fr}
+  .serv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lateral{overflow:visible}
+  .desp{position:static}
+  .desp .sub{position:absolute;left:0;right:0;top:100%;min-width:0;padding:14px 16px 18px;z-index:30}
+  .desp .sub a{padding:8px 0}
+}
+@media (max-width:520px){.serv-grid{grid-template-columns:1fr}}
 /* Proyectos */
 .rejilla{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--linea);border-left:1px solid var(--linea);margin-top:clamp(32px,5vw,56px)}
 .obra{display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:220px;padding:16px;border-right:1px solid var(--linea);border-bottom:1px solid var(--linea);text-decoration:none;position:relative;overflow:hidden}
@@ -324,7 +356,9 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     <a href="#inicio" class="marca anda" aria-label="CULTHOUSE, inicio"><span class="logo" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>CULTHOUSE</a>
     <ul class="menu">
       <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#servicios">Servicios</a></li>
+      <li class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button>
+        <ul class="sub" id="sub-serv"><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html">Publi con IA</a></li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html">Cursos y formación</a></li><li class="todos"><a href="#servicios">Todos los servicios</a></li></ul>
+      </li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -440,10 +474,24 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     </p>
   </section>
 
-  <!-- ✏️ EDITA AQUÍ: SERVICIOS. Foto: img/rodaje.jpg. La lista "formatos" son los tipos de vídeo (deben coincidir con los anuncios). Cada <li> es una línea -->
+  <!-- ✏️ EDITA AQUÍ: SERVICIOS. Cada <li> de "serv-grid" es un servicio: nombre, frase corta y enlace a su página. Foto de la pantalla: img/proyeccion.jpg -->
   <section id="servicios" data-nota="de la idea a la pantalla">
-    <div class="serv">
-      <h2 class="gigante titulo2">De la idea<br>a la pantalla</h2>
+    <div class="serv-cab">
+      <h2 class="gigante">De la idea<br>a la pantalla</h2>
+      <p class="intro-seccion">Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
+    </div>
+    <ul class="serv-grid" aria-label="Nuestros servicios">
+        <li><a class="serv-item" href="publicidad-madrid.html"><strong>Publicidad y spots</strong><span>Spots para tele y redes, promos y branded content.</span><em>Ver más →</em></a></li>
+        <li><a class="serv-item" href="publi-ia-madrid.html"><strong>Publi con IA</strong><span>Personas reales en estudio y mundos creados con IA.</span><em>Ver más →</em></a></li>
+        <li><a class="serv-item" href="video-corporativo-madrid.html"><strong>Vídeo corporativo</strong><span>Tu empresa, sus productos y su gente, bien contados.</span><em>Ver más →</em></a></li>
+        <li><a class="serv-item" href="eventos-madrid.html"><strong>Eventos</strong><span>Congresos, presentaciones y cenas de empresa. Aftermovie y streaming.</span><em>Ver más →</em></a></li>
+        <li><a class="serv-item" href="formacion-online-madrid.html"><strong>Cursos y formación</strong><span>Clases y cursos online grabados en plató o en tu centro.</span><em>Ver más →</em></a></li>
+        <li><a class="serv-item" href="#contacto"><strong>Podcast y videopodcast</strong><span>Grabación a varias cámaras, edición y clips para redes.</span><em>Pregúntanos →</em></a></li>
+        <li><a class="serv-item" href="#contacto"><strong>Reels y redes sociales</strong><span>Piezas cortas en vertical para Instagram, TikTok y LinkedIn.</span><em>Pregúntanos →</em></a></li>
+        <li><a class="serv-item" href="#contacto"><strong>Videoclips</strong><span>Para artistas, sellos y salas. Con ideas y con ritmo.</span><em>Pregúntanos →</em></a></li>
+        <li><a class="serv-item" href="#proyectos"><strong>Cine y documental</strong><span>Cortos, documentales y proyectos propios.</span><em>Pregúntanos →</em></a></li>
+    </ul>
+    <div class="serv-casa">
       <figure class="proyeccion">
         <div class="pantalla"><img src="img/proyeccion.jpg" alt="Una pieza de CULTHOUSE proyectada en la pantalla gigante de un auditorio lleno de público" loading="lazy"></div>
         <figcaption class="nota-mano">
@@ -457,19 +505,6 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
         <p>Cámaras, luces y estudio de edición propios. Nada de alquilar, subcontratar ni esperar a terceros. Tu vídeo va más rápido y te cuesta menos.</p>
         <p>Y lo rodamos con ojo de cine. Aunque sea el vídeo de la cena de empresa.</p>
         <span class="mano">sí, también la cena de empresa</span>
-      </div>
-      <div class="lista">
-        <p>Nos ocupamos de todo el camino: escribimos, producimos, rodamos y montamos. Trabajamos con instituciones, marcas, agencias y artistas, y también como equipo de refuerzo para otras productoras.</p>
-        <ul class="formatos" aria-label="Qué grabamos">
-          <li><a href="publicidad-madrid.html">Publicidad y spots →</a></li>
-          <li><a href="publi-ia-madrid.html">Publi con IA →</a></li>
-          <li>Vídeo corporativo</li>
-          <li><a href="eventos-madrid.html">Eventos corporativos →</a></li>
-          <li>Podcast y videopodcast</li>
-          <li>Reels y redes sociales</li>
-          <li>Videoclips</li>
-          <li>Cine y documental</li>
-        </ul>
         <ul class="servicios">
           <li><span>Desarrollo y guion</span><span>idea, tratamiento, dossier</span></li>
           <li><span>Producción</span><span>presupuesto, permisos, equipo</span></li>
@@ -648,6 +683,13 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     var n=document.createElement('p'); n.className='nota-movil'; n.setAttribute('aria-hidden','true'); n.textContent=sec.dataset.nota;
     h.insertAdjacentElement('afterend',n);
   });
+  var desp=document.querySelector('.desp'), dbtn=desp&&desp.querySelector('.desp-btn');
+  if(dbtn){
+    dbtn.addEventListener('click',function(e){e.stopPropagation();var ab=desp.classList.toggle('abierto');dbtn.setAttribute('aria-expanded',String(ab));});
+    document.addEventListener('click',function(e){if(!desp.contains(e.target)){desp.classList.remove('abierto');dbtn.setAttribute('aria-expanded','false');}});
+    desp.querySelectorAll('.sub a').forEach(function(a){a.addEventListener('click',function(){desp.classList.remove('abierto');dbtn.setAttribute('aria-expanded','false');});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'){desp.classList.remove('abierto');dbtn.setAttribute('aria-expanded','false');}});
+  }
   var enlaces=[].slice.call(document.querySelectorAll('.menu a'));
   function activar(sec){
     var id=sec.id||'clientes';

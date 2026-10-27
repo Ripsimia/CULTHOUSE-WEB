@@ -375,6 +375,17 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 
 @media (max-width:700px){.ia-puntos{grid-template-columns:1fr}.ia-puntos li,.ia-puntos li+li{padding:16px 0;border-right:0;border-top:1px solid var(--linea)}.ia-puntos li:first-child{border-top:0}}
 @media (max-width:900px){.portada-ev{grid-template-columns:1fr}.foto-ev .nota-mano{right:auto;left:4%}}
+.cab-ev{position:relative}
+.desp{position:relative;display:inline-block}
+.desp-btn{background:none;border:0;padding:0;font:inherit;font-size:13px;color:var(--gris);cursor:pointer;white-space:nowrap}
+.desp-btn::after{content:" ▾";font-size:.85em}
+.desp-btn:hover,.desp-btn[aria-expanded="true"]{background:none;color:var(--tinta)}
+.desp .sub{list-style:none;display:none;position:absolute;right:0;top:calc(100% + 14px);margin:0;padding:16px 26px 18px;min-width:260px;background:var(--tinta);z-index:40;box-shadow:0 18px 40px -18px rgba(0,0,0,.6)}
+.desp.abierto .sub{display:block}
+.desp .sub a{display:block;padding:7px 0;font-size:15px;color:var(--papel);text-decoration:none}
+.desp .sub a:hover,.desp .sub a[aria-current="page"]{color:var(--luz)}
+.desp .sub .todos a{opacity:.7}
+@media (max-width:700px){.desp{position:static}.desp .sub{left:0;right:0;top:100%;min-width:0;padding:14px 16px 18px}}
 @media (max-width:900px){.entrada{grid-template-columns:1fr}}
 </style>
 </head>
@@ -383,6 +394,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 <header class="cab-ev">
   <a href="./" class="marca anda" aria-label="CULTHOUSE, inicio"><span class="logo" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>CULTHOUSE</a>
   <nav class="menu-ev" aria-label="Secciones">
+    <div class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button><ul class="sub" id="sub-serv"><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html" aria-current="page">Publi con IA</a></li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html">Cursos y formación</a></li><li class="todos"><a href="./#servicios">Todos los servicios</a></li></ul></div>
     <a href="#trabajos">Ejemplos</a>
     <a href="#como">Cómo trabajamos</a>
     <a href="#preguntas">Preguntas</a>
@@ -530,6 +542,16 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
   }
   vv.addEventListener('close',function(){vv.querySelector('.marco').innerHTML='';});
   vv.addEventListener('click',function(e){if(e.target===vv||e.target.hasAttribute('data-cierra'))vv.close();});
+})();
+</script>
+<script>
+(function(){
+  var desp=document.querySelector('.desp'), dbtn=desp&&desp.querySelector('.desp-btn');
+  if(!dbtn) return;
+  function cerrar(){desp.classList.remove('abierto');dbtn.setAttribute('aria-expanded','false');}
+  dbtn.addEventListener('click',function(e){e.stopPropagation();var ab=desp.classList.toggle('abierto');dbtn.setAttribute('aria-expanded',String(ab));});
+  document.addEventListener('click',function(e){if(!desp.contains(e.target))cerrar();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')cerrar();});
 })();
 </script>
 <!-- Conversión Google Ads: clic en WhatsApp, email o teléfono -->
