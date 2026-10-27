@@ -349,7 +349,11 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .foto-ev img{animation:none}
 .foto-ev .nota-mano{left:auto;right:30%}
 .foto-ancha{margin:clamp(24px,4vw,40px) 0 0;border:1px solid var(--linea)}
-.foto-ancha img{display:block;width:100%;height:auto;aspect-ratio:1600/879;object-fit:cover}
+.foto-ancha img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.fotos-ev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,20px);margin-top:clamp(24px,4vw,40px)}
+.fotos-ev .foto-ancha{margin:0}
+.fotos-ev .doble{grid-column:1/-1}
+@media (max-width:700px){.fotos-ev{grid-template-columns:1fr}}
 @media (max-width:900px){.portada-ev{grid-template-columns:1fr}.foto-ev .nota-mano{right:auto;left:4%}}
 .cab-ev{position:relative}
 .desp{position:relative;display:inline-block}
@@ -427,7 +431,11 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
   <section class="ev" id="como">
     <h2 class="gigante">Cómo lo<br>hacemos</h2>
     <p class="nota-suelta">el mejor cámara es el que nadie<br>recuerda haber visto</p>
-    <figure class="foto-ancha"><img src="img/evento-ponencia.jpg" alt="Ponente en un evento de empresa grabado por CULTHOUSE" loading="lazy" width="1600" height="879"></figure>
+    <div class="fotos-ev">
+      <figure class="foto-ancha"><img src="img/evento-ponente.jpg" alt="Ponencia en el congreso Future of Innovation grabada por CULTHOUSE" loading="lazy" width="1206" height="686"></figure>
+      <figure class="foto-ancha"><img src="img/evento-mesa-redonda.jpg" alt="Mesa redonda en el congreso Future of Innovation grabada por CULTHOUSE" loading="lazy" width="1206" height="674"></figure>
+      <figure class="foto-ancha doble"><img src="img/evento-ponencia.jpg" alt="Ponente en un evento de empresa grabado por CULTHOUSE" loading="lazy" width="1600" height="879"></figure>
+    </div>
     <ol class="pasos">
       <li><span class="num">1</span><h3>Hablamos</h3><p>15 minutos. Nos cuentas qué es, dónde y para qué quieres el vídeo. Nosotros apuntamos hasta la hora del café.</p></li>
       <li><span class="num">2</span><h3>Lo preparamos</h3><p>Presupuesto a medida, plan de grabación y los momentos que no nos podemos perder.</p></li>
