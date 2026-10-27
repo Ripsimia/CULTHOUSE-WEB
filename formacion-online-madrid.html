@@ -366,6 +366,15 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .desp .sub a:hover,.desp .sub a[aria-current="page"]{color:var(--luz)}
 .desp .sub .todos a{opacity:.7}
 @media (max-width:700px){.desp{position:static}.desp .sub{left:0;right:0;top:100%;min-width:0;padding:14px 16px 18px}}
+.cortos{display:grid;grid-template-columns:repeat(2,minmax(0,280px));gap:clamp(16px,3vw,32px);margin-top:clamp(24px,4vw,40px)}
+.corto{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit}
+.corto .img{display:block;aspect-ratio:9/16;background:#000 var(--img) center/cover no-repeat;box-shadow:0 0 0 1px var(--linea);margin-bottom:8px;transition:transform .3s}
+.corto:hover .img{transform:translateY(-4px)}
+.corto .sello{font-size:12px;color:var(--gris)}
+.corto h3{margin:0;font-weight:400;font-size:15px;line-height:1.3}
+.corto h3 span{display:block;color:var(--gris);font-weight:300}
+@media (max-width:520px){.cortos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+#entrevistas .grande{margin-top:20px}
 @media (max-width:900px){.entrada{grid-template-columns:1fr}}
 </style>
 </head>
@@ -374,7 +383,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 <header class="cab-ev">
   <a href="./" class="marca anda" aria-label="CULTHOUSE, inicio"><span class="logo" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>CULTHOUSE</a>
   <nav class="menu-ev" aria-label="Secciones">
-    <div class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button><ul class="sub" id="sub-serv"><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html">Publi con IA</a></li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html" aria-current="page">Cursos y formación</a></li><li><a href="podcast-madrid.html">Podcast y videopodcast</a></li><li><a href="reels-redes-madrid.html">Reels y redes</a></li><li><a href="videoclips-madrid.html">Videoclips</a></li><li><a href="cine-documental-madrid.html">Cine y documental</a></li><li class="todos"><a href="./#servicios">Todos los servicios</a></li></ul></div>
+    <div class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button><ul class="sub" id="sub-serv"><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html">Publi con IA</a></li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html" aria-current="page">Cursos y formación</a></li><li><a href="podcast-madrid.html">Podcast y videopodcast</a></li><li><a href="videoclips-madrid.html">Videoclips</a></li><li><a href="cine-documental-madrid.html">Cine y documental</a></li><li class="todos"><a href="./#servicios">Todos los servicios</a></li></ul></div>
     <a href="#proyectos">Proyectos</a>
     <a href="#como">Cómo trabajamos</a>
     <a href="#preguntas">Preguntas</a>
@@ -409,6 +418,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       <li>Píldoras formativas</li>
       <li>Formación interna</li>
       <li>Webinars</li>
+      <li>Entrevistas con expertos</li>
     </ul>
     <div class="botones">
       <a class="btn btn-lleno btn-grande" href="mailto:hey@culthouse.art?subject=Proyecto%20desde%20la%20web%3A%20Cursos%20y%20formaci%C3%B3n">Cuéntanos tu curso</a>
@@ -422,6 +432,17 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     <p class="nota-suelta">la teoría la pone el profesor.<br>la luz, nosotros</p>
     <div class="rejilla">
       <a class="obra con-foto" style="--img:url(https://i.ytimg.com/vi/YQalo3AKCxg/maxresdefault.jpg)" href="https://youtu.be/YQalo3AKCxg" target="_blank" rel="noopener" data-video="YQalo3AKCxg"><span class="sello">Formación online</span><h3>Curso de psicología.<span>Grabado en plató y editado de principio a fin. Clases claras, bien iluminadas y que dan ganas de terminar.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: ENTREVISTAS (clips verticales de YouTube Shorts) -->
+  <section class="ev" id="entrevistas">
+    <h2 class="gigante">Entrevistas<br>con expertos</h2>
+    <p class="nota-suelta">lo que sabe un experto,<br>contado en un minuto</p>
+    <p class="grande">También grabamos entrevistas a tres cámaras para explicar temas complejos de forma clara: formación para clientes, equipos o redes.</p>
+    <div class="cortos">
+      <a class="corto" href="https://youtube.com/shorts/SLWHCMmuL2g" target="_blank" rel="noopener" data-video="SLWHCMmuL2g"><span class="img" style="--img:url(https://i.ytimg.com/vi/SLWHCMmuL2g/hqdefault.jpg)"></span><span class="sello">Videopodcast para BlackRock</span><h3>Entrevista a tres cámaras.<span>Clip vertical para redes, con subtítulos.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
+      <a class="corto" href="https://youtube.com/shorts/4PulLbQTM2E" target="_blank" rel="noopener" data-video="4PulLbQTM2E"><span class="img" style="--img:url(https://i.ytimg.com/vi/4PulLbQTM2E/hqdefault.jpg)"></span><span class="sello">Videopodcast para BlackRock</span><h3>Entrevista a pantalla partida.<span>Grabada a tres cámaras: dos planos de la misma conversación a la vez.</span></h3><span class="ver-proceso">Ver vídeo</span></a>
     </div>
   </section>
 
