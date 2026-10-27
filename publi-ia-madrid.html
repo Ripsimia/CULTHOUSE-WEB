@@ -374,6 +374,15 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 @media (max-width:700px){.galeria-ia{grid-template-columns:1fr}}
 
 @media (max-width:700px){.ia-puntos{grid-template-columns:1fr}.ia-puntos li,.ia-puntos li+li{padding:16px 0;border-right:0;border-top:1px solid var(--linea)}.ia-puntos li:first-child{border-top:0}}
+#proceso-ia h2.gigante{font-size:clamp(3rem,6.4vw,6.6rem)}
+.dirigimos{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
+.dirigimos .grande{margin:clamp(20px,3vw,28px) 0 12px}
+.dirigimos > div > p:not(.grande):not(.nota-suelta){margin:0;max-width:52ch}
+.ia-puntos.dos{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:clamp(20px,3vw,28px)}
+.pieza.vertical{max-width:380px;justify-self:center;width:100%}
+.pieza.vertical .clip{aspect-ratio:9/16}
+@media (max-width:900px){.dirigimos{grid-template-columns:1fr}}
+@media (max-width:700px){.ia-puntos.dos{grid-template-columns:1fr}}
 @media (max-width:900px){.portada-ev{grid-template-columns:1fr}.foto-ev .nota-mano{right:auto;left:4%}}
 .cab-ev{position:relative}
 .desp{position:relative;display:inline-block}
@@ -435,8 +444,27 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       <li><strong>Listo en unos días.</strong> Sin esperar a que haga buen tiempo ni a que abra el museo.</li>
     </ul>
     <div class="botones">
-      <a class="btn btn-lleno btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20me%20interesa%20la%20publi%20con%20IA" target="_blank" rel="noopener">Cuéntanos tu idea</a>
+      <a class="btn btn-lleno btn-grande" href="mailto:hey@culthouse.art?subject=Proyecto%20desde%20la%20web%3A%20Publi%20con%20IA">Cuéntanos tu idea</a>
       <a class="btn btn-grande" href="#trabajos">Ver más ejemplos</a>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: PRIMERO DIRIGIMOS. Vídeo vertical del proceso: img/ia-proceso.mp4 (imagen fija img/ia-proceso.jpg) -->
+  <section class="ev" id="proceso-ia">
+    <div class="dirigimos">
+      <div>
+        <h2 class="gigante">Primero<br>dirigimos.<br>Luego<br>generamos.</h2>
+        <p class="nota-suelta">la IA no elige el plano.<br>lo elegimos nosotros</p>
+        <p class="grande">Antes de generar nada, montamos la escena en 3D: dónde va la cámara, cómo se mueve y qué se ve en cada momento. Luego la IA genera el plano con esa misma cámara y ese mismo recorrido.</p>
+        <p>Así el resultado sale como lo hemos pensado, y no como le apetece a la máquina. En el vídeo lo ves: arriba el resultado, abajo la previsualización en 3D.</p>
+        <ul class="ia-puntos dos">
+          <li><strong>Previsualización 3D.</strong> Decidimos encuadre, luz y movimiento antes de generar.</li>
+          <li><strong>Misma cámara, mismo recorrido.</strong> El plano final respeta lo que se dirigió.</li>
+        </ul>
+      </div>
+      <figure class="pieza vertical">
+        <div class="clip"><video id="video-proceso" autoplay muted loop playsinline preload="metadata" poster="img/ia-proceso.jpg" aria-label="Comparación entre la previsualización 3D y el resultado generado con IA"><source src="img/ia-proceso.mp4" type="video/mp4"></video><button type="button" class="ia-sonido" id="proceso-sonido" aria-pressed="false">Con sonido</button></div>
+      </figure>
     </div>
   </section>
 
@@ -534,6 +562,13 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     son.addEventListener('click',function(){
       via.muted=!via.muted; if(!via.muted){via.currentTime=0; via.play();}
       son.textContent=via.muted?'Con sonido':'Sin sonido'; son.setAttribute('aria-pressed',String(!via.muted));
+    });
+  }
+  var vp=document.getElementById('video-proceso'), sp=document.getElementById('proceso-sonido');
+  if(vp && sp){
+    sp.addEventListener('click',function(){
+      vp.muted=!vp.muted; if(!vp.muted){vp.currentTime=0; vp.play();}
+      sp.textContent=vp.muted?'Con sonido':'Sin sonido'; sp.setAttribute('aria-pressed',String(!vp.muted));
     });
   }
   vv.addEventListener('close',function(){vv.querySelector('.marco').innerHTML='';});
