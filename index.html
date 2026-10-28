@@ -21,6 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- ✏️ EDITA AQUÍ: título y descripción que salen en Google y al compartir el enlace -->
 <title>CULTHOUSE | Productora audiovisual en Madrid</title>
+<link rel="preload" as="image" href="img/izbushka-inicio.jpg" fetchpriority="high">
 <meta name="description" content="Productora audiovisual en Madrid: publicidad y spots, vídeo corporativo, grabación de eventos, podcast y videopodcast, reels, videoclips, cine y documental.">
 <meta property="og:title" content="CULTHOUSE | Productora audiovisual en Madrid">
 <meta property="og:description" content="Spots, vídeo corporativo, eventos, podcast y videopodcast, reels, videoclips, cine y documental. Productora audiovisual en Madrid.">
@@ -377,12 +378,11 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 </aside>
 
 <main>
-  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/izbushka.mp4 (ordenador) e img/izbushka-720.mp4 (móvil), se reproduce una vez y se queda en el último plano. Imágenes: izbushka-inicio.jpg y izbushka-final.jpg. CULTHOUSE aparece cuando se abre la puerta (segundo 7,8, en el script de abajo) -->
+  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/izbushka-720.mp4 (versión ligera para todos; la de 1080 sigue en img/izbushka.mp4), se reproduce una vez y se queda en el último plano. Imágenes: izbushka-inicio.jpg y izbushka-final.jpg. CULTHOUSE aparece cuando se abre la puerta (segundo 7,8, en el script de abajo) -->
   <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
     <div class="escenario" id="escenario">
       <video id="video-portada" autoplay muted playsinline preload="auto" poster="img/izbushka-inicio.jpg" aria-label="La casa del bosque se abre y deja ver el estudio de CULTHOUSE">
-        <source src="img/izbushka-720.mp4" type="video/mp4" media="(max-width: 900px)">
-        <source src="img/izbushka.mp4" type="video/mp4">
+        <source src="img/izbushka-720.mp4" type="video/mp4">
       </video>
       <h1 class="gigante">Culthouse<span class="sr">, productora audiovisual en Madrid</span></h1>
       <div class="capa">
