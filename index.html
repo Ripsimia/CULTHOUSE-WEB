@@ -21,7 +21,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- ✏️ EDITA AQUÍ: título y descripción que salen en Google y al compartir el enlace -->
 <title>CULTHOUSE | Productora audiovisual en Madrid</title>
-<link rel="preload" as="image" href="img/izbushka-inicio.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="img/sala-inicio.jpg" fetchpriority="high">
 <meta name="description" content="Productora audiovisual en Madrid: publicidad y spots, vídeo corporativo, grabación de eventos, podcast y videopodcast, reels, videoclips, cine y documental.">
 <meta property="og:title" content="CULTHOUSE | Productora audiovisual en Madrid">
 <meta property="og:description" content="Spots, vídeo corporativo, eventos, podcast y videopodcast, reels, videoclips, cine y documental. Productora audiovisual en Madrid.">
@@ -351,6 +351,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 .faq summary::after{content:"+";font-weight:300}
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:10px 0 0;max-width:62ch}
+/* Móvil: el vídeo de la sala se ve entero, sin recortar, sobre fondo negro */
+@media (max-width:900px){.portada .escenario video{object-fit:contain;object-position:50% 38%}}
 </style>
 <!-- Microsoft Clarity, sin cookies -->
 <script type="text/javascript">
@@ -386,13 +388,14 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 </aside>
 
 <main>
-  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/izbushka-720.mp4 (versión ligera para todos; la de 1080 sigue en img/izbushka.mp4), se reproduce una vez y se queda en el último plano. Imágenes: izbushka-inicio.jpg y izbushka-final.jpg. CULTHOUSE aparece cuando se abre la puerta (segundo 7,8, en el script de abajo) -->
+  <!-- ✏️ EDITA AQUÍ: PORTADA. Vídeo de fondo: img/sala-720.mp4 en móvil y img/sala.mp4 en ordenador (la sala de cine), se reproduce una vez y se queda en el plano final con CULTHOUSE. Imágenes: sala-inicio.jpg y sala-final.jpg. El título aparece cuando sale CULTHOUSE en pantalla (segundo 8,8, en el script de abajo) -->
   <section class="portada" id="inicio" data-nota="una casa que gira hacia cada historia">
     <div class="escenario" id="escenario">
-      <video id="video-portada" autoplay muted playsinline preload="auto" poster="img/izbushka-inicio.jpg" aria-label="La casa del bosque se abre y deja ver el estudio de CULTHOUSE">
-        <source src="img/izbushka-720.mp4" type="video/mp4">
+      <video id="video-portada" autoplay muted playsinline preload="auto" poster="img/sala-inicio.jpg" aria-label="Una sala de cine con trabajos de CULTHOUSE en pantalla">
+        <source src="img/sala-720.mp4" type="video/mp4" media="(max-width:900px)">
+        <source src="img/sala.mp4" type="video/mp4">
       </video>
-      <h1 class="gigante">Culthouse<span class="sr">, productora audiovisual en Madrid</span></h1>
+      <h1 class="gigante sr">Culthouse, productora audiovisual en Madrid</h1>
       <div class="capa">
       <div class="centro">
         <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
@@ -735,9 +738,9 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   function titulo(){ if(esc) esc.classList.add('titulo'); }
   if(vp){
     if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
-      vp.removeAttribute('autoplay'); vp.pause(); vp.poster='img/izbushka-final.jpg'; titulo();
+      vp.removeAttribute('autoplay'); vp.pause(); vp.poster='img/sala-final.jpg'; titulo();
     } else {
-      vp.addEventListener('timeupdate',function(){ if(vp.currentTime>=7.8) titulo(); });
+      vp.addEventListener('timeupdate',function(){ if(vp.currentTime>=8.8) titulo(); });
       vp.addEventListener('ended',function(){ titulo(); });
       setTimeout(function(){ if(vp.paused||vp.readyState<2){ titulo(); } },2500);
       setTimeout(titulo,11000);
