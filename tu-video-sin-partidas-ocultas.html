@@ -439,7 +439,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .cf .cuenta b{font-family:var(--display);font-weight:500;font-size:48px;line-height:1;font-variant-numeric:tabular-nums}
 .cf .cuenta span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
 .cf .frase{margin:0;font-size:17px;line-height:1.45;max-width:60ch}
-.cf form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end}
+.cf form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end}
 .cf form label{display:grid;gap:6px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
 .cf form input,.cf form select,.cf form textarea{font:inherit;font-size:15px;text-transform:none;letter-spacing:0;color:var(--tinta);background:var(--papel);border:1px solid var(--linea);padding:10px 12px;width:100%}
 .cf form .ancho{grid-column:1/-1}
@@ -513,22 +513,12 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       </div>
       <p class="frase" id="frase"></p>
       <form id="form" novalidate>
-        <label for="empresa">Tipo de empresa
-          <select id="empresa" name="empresa" required>
-            <option value="">Elige una</option>
-            <option>Empresa (más de 50 personas)</option>
-            <option>Empresa pequeña o negocio</option>
-            <option>Agencia de marketing o eventos</option>
-            <option>Institución pública o fundación</option>
-            <option>Artista o particular</option>
-          </select>
-        </label>
         <label for="nombre">Nombre<input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" required></label>
         <label for="email">Email o teléfono<input id="email" name="contacto" type="text" autocomplete="email" placeholder="tu@empresa.com" required></label>
         <label for="mas" class="ancho">¿Algo más que debamos saber? (opcional)<textarea id="mas" name="mensaje" rows="2" placeholder="Fecha, duración, idea…"></textarea></label>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <label class="acepto" for="acepto"><input type="checkbox" id="acepto" required> He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a></label>
-        <p class="error-campos" id="error-campos" hidden>Falta el tipo de empresa, tu nombre, tu contacto o aceptar la política de privacidad.</p>
+        <p class="error-campos" id="error-campos" hidden>Falta tu nombre, tu contacto o aceptar la política de privacidad.</p>
         <button class="enviar" type="submit" id="f-enviar">Quiero mi presupuesto desglosado</button>
         <div class="aviso-form" id="f-aviso" hidden>
           <p>No hemos podido enviar el formulario. A veces algunas conexiones bloquean el servicio de envío durante un rato.</p>
@@ -716,10 +706,10 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     e.preventDefault();
     var f=$('form'), btn=$('f-enviar'), aviso=$('f-aviso'), err=$('error-campos');
     if(f._honey.value) return;
-    if(!f.empresa.value || !f.nombre.value.trim() || !f.contacto.value.trim() || !$('acepto').checked){ err.hidden=false; return; }
+    if(!f.nombre.value.trim() || !f.contacto.value.trim() || !$('acepto').checked){ err.hidden=false; return; }
     err.hidden=true;
     var c=configuracion();
-    var texto='Hola, soy '+f.nombre.value+' ('+f.contacto.value+', '+f.empresa.value+'). He montado un '+c.tipo.toLowerCase()+' en vuestra web: '+c.respuestas+'. Fases: '+c.fases+'.'+(f.mensaje.value?' '+f.mensaje.value:'');
+    var texto='Hola, soy '+f.nombre.value+' ('+f.contacto.value+'). He preparado un '+c.tipo.toLowerCase()+' en vuestra web: '+c.respuestas+'. Fases: '+c.fases+'.'+(f.mensaje.value?' '+f.mensaje.value:'');
     $('f-wa').href='https://wa.me/34651129062?text='+encodeURIComponent(texto);
     $('f-mail').href='mailto:hey@culthouse.art?subject='+encodeURIComponent('Tu vídeo sin partidas ocultas: '+c.tipo)+'&body='+encodeURIComponent(texto);
     btn.disabled=true; btn.textContent='Enviando…'; aviso.hidden=true;
@@ -731,7 +721,6 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     w3.append('Respuestas',c.respuestas);
     w3.append('Fases y cómo las quiere',c.fases);
     w3.append('Resumen',c.frase);
-    w3.append('Tipo de empresa',f.empresa.value);
     w3.append('Nombre',f.nombre.value);
     w3.append('Contacto',f.contacto.value);
     w3.append('Algo más',f.mensaje.value||'—');
@@ -740,7 +729,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     fs.append('_template','table');
     fs.append('_cc','sima@culthouse.art');
     fs.append('tipo_de_video',c.tipo); fs.append('respuestas',c.respuestas); fs.append('fases',c.fases);
-    fs.append('empresa',f.empresa.value); fs.append('nombre',f.nombre.value); fs.append('contacto',f.contacto.value); fs.append('mensaje',f.mensaje.value||'—');
+    fs.append('nombre',f.nombre.value); fs.append('contacto',f.contacto.value); fs.append('mensaje',f.mensaje.value||'—');
     envia('https://api.web3forms.com/submit', w3)
       .then(function(ok){ return ok || envia('https://formsubmit.co/ajax/hey@culthouse.art', fs); })
       .then(function(ok){
