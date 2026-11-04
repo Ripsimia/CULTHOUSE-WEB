@@ -391,7 +391,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .cf .sino button{font:inherit;font-size:13px;font-weight:500;min-width:52px;padding:7px 12px;border:1px solid var(--linea);background:transparent;color:var(--tinta);cursor:pointer}
 .cf .sino button[aria-pressed="true"]{border-color:var(--tinta);background:var(--tinta);color:var(--papel)}
 .cf .tabla-caja{overflow-x:auto;border:1px solid var(--linea);background:var(--tarjeta)}
-.cf table{border-collapse:collapse;width:100%;min-width:560px}
+.cf table{border-collapse:collapse;width:100%}
+.cf th:nth-child(2){width:46%}
 .cf th,.cf td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--linea);vertical-align:middle}
 .cf th{font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--gris)}
 .cf th.c,.cf td.c{text-align:center;width:96px}
@@ -401,6 +402,10 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .cf td.ahorro{color:var(--gris);font-size:13.5px}
 .cf tr.quitada td{opacity:.38}
 .cf tr.quitada td.fase{text-decoration:line-through}
+.cf .quien{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:4px 10px;border-radius:999px;border:1px solid var(--linea);color:var(--tinta);white-space:nowrap}
+.cf .quien.ia{background:var(--si-fondo);color:var(--si);border-color:transparent}
+.cf td small{display:block;color:var(--gris);font-size:12px;font-weight:300;margin-top:5px}
+.cf td.fase .quitar{display:table;margin-top:6px}
 .cf .marca-si,.cf .marca-no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;font-weight:500;font-size:15px}
 .cf .marca-si{color:var(--si);background:var(--si-fondo)}
 .cf .marca-no{color:var(--no);background:var(--no-fondo)}
@@ -465,10 +470,10 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 
     <section class="paso" aria-labelledby="p3">
       <h2 id="p3"><span>3</span>Lo que lleva tu vídeo</h2>
-      <p class="ayuda">✓ hace falta · ✕ te lo ahorras. Si una fase te sobra, quítala.</p>
+      <p class="ayuda">Con rodaje clásico, todas las fases las hace nuestro equipo. Con IA, algunas las pone la IA y esas no las pagas. Así queda tu vídeo con IA. Si una fase te sobra, quítala.</p>
       <div class="tabla-caja">
         <table>
-          <thead><tr><th>Fase</th><th class="c">Con rodaje</th><th class="c">Con IA</th><th>Qué te ahorras</th></tr></thead>
+          <thead><tr><th>Fase</th><th>Quién la hace (con IA)</th></tr></thead>
           <tbody id="filas"></tbody>
         </table>
       </div>
@@ -485,8 +490,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     <section class="resumen" aria-labelledby="r" id="presupuesto">
       <h2 id="r" class="sr">Resumen</h2>
       <div class="cuentas">
-        <div class="cuenta"><b id="n-rodaje">0</b><span>fases con rodaje</span></div>
-        <div class="cuenta"><b id="n-ia">0</b><span>fases con IA</span></div>
+        <div class="cuenta"><b id="n-rodaje">0</b><span>fases en total</span></div>
+        <div class="cuenta"><b id="n-ia">0</b><span>las pone la IA y no las pagas</span></div>
       </div>
       <p class="frase" id="frase"></p>
       <form id="form" novalidate>
@@ -613,23 +618,28 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       d.appendChild(g); c.appendChild(d);
     });
   }
-  function marca(v){ return v ? '<span class="marca-si" aria-label="hace falta">✓</span>' : '<span class="marca-no" aria-label="te lo ahorras">✕</span>'; }
+  var ICO_EQ='<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="5" r="3" fill="currentColor"/><path d="M2 15c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" fill="currentColor"/></svg>';
+  function chipEquipo(){ return '<span class="quien">'+ICO_EQ+'Nuestro equipo</span>'; }
+  function chipIA(){ return '<span class="quien ia">✦ La pone la IA</span>'; }
+  function ahorro(t){ return t.charAt(0).toLowerCase()+t.slice(1); }
   function pintarFilas(){
-    var tb=$('filas'); tb.innerHTML=''; var nR=0, nI=0;
+    var tb=$('filas'); tb.innerHTML=''; var nR=0, nI=0, deIA=[];
     T[estado.tipo].filas.forEach(function(f, i){
       var cond=f[5]; if(cond && (Array.isArray(cond) ? estado.resp[cond[0]]!==cond[1] : !estado.resp[cond])) return;
       var key=estado.tipo+'-'+i, quitada=!!estado.quitadas[key];
-      if(!quitada){ if(f[2]) nR++; if(f[3]) nI++; }
+      var nombre=f[0].replace('{n}',estado.resp.personas);
+      if(!quitada){ nR++; if(f[3]) nI++; else deIA.push(nombre.toLowerCase()); }
       var tr=document.createElement('tr'); if(quitada) tr.className='quitada';
-      tr.innerHTML='<td class="fase">'+f[0].replace('{n}',estado.resp.personas)+(f[1]?'<small>'+f[1]+'</small>':'')+'</td><td class="c">'+marca(f[2])+'</td><td class="c">'+marca(f[3])+'</td><td class="ahorro"></td>';
-      var td=tr.lastChild; var s=document.createElement('span'); s.textContent=f[4]+' '; td.appendChild(s);
+      var nota=/^Nada/.test(f[4]) ? '' : '<small>Te ahorras '+ahorro(f[4])+'</small>';
+      tr.innerHTML='<td class="fase">'+nombre+(f[1]?'<small>'+f[1]+'</small>':'')+'</td>'+
+        '<td>'+(f[3]?chipEquipo()+nota:chipIA()+nota)+'</td>';
       var q=document.createElement('button'); q.type='button'; q.className='quitar'; q.id='quitar-'+key;
       q.textContent=quitada?'volver a poner':'quitar';
       q.addEventListener('click', function(){ estado.quitadas[key]=!quitada; pintar(); });
-      td.appendChild(q); tb.appendChild(tr);
+      tr.firstChild.appendChild(q); tb.appendChild(tr);
     });
-    $('n-rodaje').textContent=nR; $('n-ia').textContent=nI;
     var dif=nR-nI;
+    $('n-rodaje').textContent=nR; $('n-ia').textContent=dif;
     var extra = '';
     if(estado.tipo==='podcast'){
       var r=estado.resp, partes=[];
@@ -638,7 +648,9 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       partes.push(r.lugar==='plato'?'en plató':'en tu oficina');
       extra=' ('+partes.join(', ')+')';
     }
-    $('frase').textContent = 'Tu '+T[estado.tipo].nombre.toLowerCase()+extra+' necesita '+nR+' fases con rodaje'+(dif>0?' y '+nI+' con IA: '+dif+(dif===1?' fase menos':' fases menos')+' que pagar.':'. Aquí la IA no quita ninguna.')+' Te mandamos el presupuesto desglosado partida por partida en menos de 24 horas.';
+    var conY = deIA.some(function(x){return / y /.test(x);});
+    var lista = deIA.length<2 ? (deIA[0]||'') : conY ? deIA.join('; ') : deIA.slice(0,-1).join(', ')+' y '+deIA[deIA.length-1];
+    $('frase').textContent = 'Tu '+T[estado.tipo].nombre.toLowerCase()+extra+' lleva '+nR+(nR===1?' fase':' fases')+'. '+(dif>0?'En la versión con IA, '+(dif===1?'una la pone':dif+' las pone')+' la IA ('+lista+') y no '+(dif===1?'la pagas.':'las pagas.')+' Todo lo demás lo hace nuestro equipo.':'Todas las hace nuestro equipo: aquí la IA no ahorra nada.')+' Te mandamos el presupuesto desglosado partida por partida en menos de 24 horas.';
   }
   function pintar(){
     pintarTipos(); pintarPreguntas(); pintarFilas();
