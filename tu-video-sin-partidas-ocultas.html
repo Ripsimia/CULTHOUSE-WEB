@@ -517,9 +517,9 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
         <label for="email">Email o teléfono<input id="email" name="contacto" type="text" autocomplete="email" placeholder="tu@empresa.com" required></label>
         <label for="mas" class="ancho">¿Algo más que debamos saber? (opcional)<textarea id="mas" name="mensaje" rows="2" placeholder="Fecha, duración, idea…"></textarea></label>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-        <label class="acepto" for="acepto"><input type="checkbox" id="acepto" required> He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a></label>
-        <p class="error-campos" id="error-campos" hidden>Falta tu nombre, tu contacto o aceptar la política de privacidad.</p>
+        <p class="error-campos" id="error-campos" hidden>Falta tu nombre o tu contacto.</p>
         <button class="enviar" type="submit" id="f-enviar">Quiero mi presupuesto desglosado</button>
+        <p class="acepto" style="display:block;margin:6px 0 0">Al enviar, aceptas la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</p>
         <div class="aviso-form" id="f-aviso" hidden>
           <p>No hemos podido enviar el formulario. A veces algunas conexiones bloquean el servicio de envío durante un rato.</p>
           <a class="btn btn-lleno" id="f-wa" href="https://wa.me/34651129062" target="_blank" rel="noopener">Enviarlo por WhatsApp</a>
@@ -706,7 +706,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     e.preventDefault();
     var f=$('form'), btn=$('f-enviar'), aviso=$('f-aviso'), err=$('error-campos');
     if(f._honey.value) return;
-    if(!f.nombre.value.trim() || !f.contacto.value.trim() || !$('acepto').checked){ err.hidden=false; return; }
+    if(!f.nombre.value.trim() || !f.contacto.value.trim()){ err.hidden=false; return; }
     err.hidden=true;
     var c=configuracion();
     var texto='Hola, soy '+f.nombre.value+' ('+f.contacto.value+'). He preparado un '+c.tipo.toLowerCase()+' en vuestra web: '+c.respuestas+'. Fases: '+c.fases+'.'+(f.mensaje.value?' '+f.mensaje.value:'');
