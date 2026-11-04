@@ -400,8 +400,26 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .cf td.fase{font-weight:400}
 .cf td.fase small{display:block;color:var(--gris);font-size:12px;font-weight:300}
 .cf td.ahorro{color:var(--gris);font-size:13.5px}
-.cf tr.quitada td{opacity:.38}
 .cf tr.quitada td.fase{text-decoration:line-through}
+.cf .elige{display:flex;flex-wrap:wrap;gap:6px}
+.cf .elige button{font:inherit;font-size:13px;font-weight:500;padding:7px 12px;border:1px solid var(--linea);background:transparent;color:var(--tinta);cursor:pointer;border-radius:999px}
+.cf .elige button:hover{border-color:var(--tinta)}
+.cf .elige button[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--papel)}
+.cf .elige button.op-ia{color:var(--si);border-color:var(--si-fondo);background:var(--si-fondo)}
+.cf .elige button.op-ia[aria-pressed="true"]{background:var(--si);border-color:var(--si);color:var(--papel)}
+.cf small.ahorro-ia{color:var(--si)}
+.cf .txt-ia{color:var(--si);font-weight:500}
+.cf .ayuda b{font-weight:500}
+.cf tr.quitada td.fase{opacity:.4;text-decoration:line-through}
+@media (max-width:700px){
+  .cf table,.cf tbody,.cf tr,.cf td{display:block;width:auto}
+  .cf thead{display:none}
+  .cf tr{border-bottom:1px solid var(--linea);padding:12px 14px}
+  .cf tr:last-child{border-bottom:0}
+  .cf td{border:0;padding:0}
+  .cf td + td{margin-top:10px}
+  .cf .elige button{padding:7px 11px;font-size:12.5px}
+}
 .cf .quien{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;padding:4px 10px;border-radius:999px;border:1px solid var(--linea);color:var(--tinta);white-space:nowrap}
 .cf .quien.ia{background:var(--si-fondo);color:var(--si);border-color:transparent}
 .cf td small{display:block;color:var(--gris);font-size:12px;font-weight:300;margin-top:5px}
@@ -470,10 +488,10 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 
     <section class="paso" aria-labelledby="p3">
       <h2 id="p3"><span>3</span>Lo que lleva tu vídeo</h2>
-      <p class="ayuda">Con rodaje clásico, todas las fases las hace nuestro equipo. Con IA, algunas las pone la IA y esas no las pagas. Así queda tu vídeo con IA. Si una fase te sobra, quítala.</p>
+      <p class="ayuda">Tú eliges cómo quieres cada fase. Donde se puede, te damos dos caminos: <b>real</b>, como siempre, o <b class="txt-ia">✦ con IA</b>, que ahorra rodaje. Y si algo te sobra, «no hace falta».</p>
       <div class="tabla-caja">
         <table>
-          <thead><tr><th>Fase</th><th>Quién la hace (con IA)</th></tr></thead>
+          <thead><tr><th>Fase</th><th>¿Cómo la quieres?</th></tr></thead>
           <tbody id="filas"></tbody>
         </table>
       </div>
@@ -490,8 +508,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     <section class="resumen" aria-labelledby="r" id="presupuesto">
       <h2 id="r" class="sr">Resumen</h2>
       <div class="cuentas">
-        <div class="cuenta"><b id="n-rodaje">0</b><span>fases en total</span></div>
-        <div class="cuenta"><b id="n-ia">0</b><span>las pone la IA y no las pagas</span></div>
+        <div class="cuenta"><b id="n-rodaje">0</b><span>con nuestro equipo</span></div>
+        <div class="cuenta" id="fila-ia"><b id="n-ia">0</b><span>✦ con IA</span></div>
       </div>
       <p class="frase" id="frase"></p>
       <form id="form" novalidate>
@@ -535,59 +553,59 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     spot:{nombre:'Spot', nota:'la IA pone el decorado. el talento lo sigue poniendo un humano. de momento.', muestra:true,
       preguntas:[{id:'personas',txt:'¿Salen personas?',def:true},{id:'producto',txt:'¿Se ve el producto?',def:true}],
       filas:[
-        ['Idea y guion','',1,1,'Nada: la idea es la idea'],
-        ['Casting','si salen personas',1,1,'Nada: buscamos a la persona adecuada igual','personas'],
-        ['Actores reales','si salen personas',1,1,'Horas: se rueda en plató, no en exteriores','personas'],
-        ['Localización','',1,0,'Buscarla, pagarla y desplazar al equipo'],
-        ['Decorado y atrezo','',1,0,'Construirlo: el escenario se crea con IA'],
-        ['Producto en pantalla','si se ve',1,1,'Nada: tu producto se rueda de verdad','producto'],
-        ['Rodaje','',1,1,'Tiempo: plató con croma en lugar de exteriores'],
-        ['Montaje, color y música','',1,1,'Nada: aquí no se recorta']]},
+        ['Idea y guion','',1,1,''],
+        ['Casting','si salen personas',1,1,'','personas'],
+        ['Actores','si salen personas',1,1,'','personas'],
+        ['Localización','',1,0,'Con IA no hay que buscarla, pagarla ni desplazar al equipo'],
+        ['Decorado y atrezo','',1,0,'Con IA el escenario se crea sin construirlo'],
+        ['Producto en pantalla','si se ve',1,1,'','producto'],
+        ['Rodaje','',1,1,''],
+        ['Montaje, color y música','',1,1,'']]},
     corporativo:{nombre:'Vídeo corporativo', nota:'menos powerpoint con música de fondo. más cine.', muestra:false,
       preguntas:[{id:'empleados',txt:'¿Hablan empleados a cámara?',def:true},{id:'voz',txt:'¿Lleva voz en off?',def:false},{id:'sedes',txt:'¿Grabamos en más de una sede?',def:false}],
       filas:[
-        ['Idea y guion','',1,1,'Nada'],
-        ['Preparar a quien habla a cámara','si hablan empleados',1,1,'Nada: los nervios se quitan igual','empleados'],
-        ['Locutor de voz en off','si la hay',1,0,'Locutor y estudio: voz con IA, casi no se distingue y llega antes','voz'],
-        ['Rodaje en tus oficinas','',1,1,'Nada: tu equipo y tu sitio son reales'],
-        ['Planos de recurso','',1,0,'Rodarlos: se crean con IA a partir de tu marca'],
-        ['Desplazamiento a otras sedes','si hay varias',1,0,'Viajes y días de equipo','sedes'],
-        ['Rótulos y animaciones','',1,1,'Nada'],
-        ['Montaje, color y música','',1,1,'Nada'],
-        ['Versiones para LinkedIn y redes','',1,1,'Nada: salen del mismo rodaje']]},
+        ['Idea y guion','',1,1,''],
+        ['Preparar a quien habla a cámara','si hablan empleados',1,1,'','empleados'],
+        ['Voz en off','si la hay',1,0,'Con IA casi no se distingue de un locutor, sin estudio y más rápida','voz'],
+        ['Rodaje en tus oficinas','',1,1,''],
+        ['Planos de recurso','',1,0,'Con IA se crean a partir de tu marca, sin rodarlos'],
+        ['Otras sedes','si hay varias',1,0,'Con IA, sin viajes ni días extra de equipo','sedes'],
+        ['Rótulos y animaciones','',1,1,''],
+        ['Montaje, color y música','',1,1,''],
+        ['Versiones para LinkedIn y redes','',1,1,'']]},
     evento:{nombre:'Evento', nota:'aquí la IA no ahorra nada. tu evento pasa una vez y hay que estar.', muestra:false,
       preguntas:[{id:'entrevistas',txt:'¿Queréis entrevistas a asistentes?',def:true},{id:'dron',txt:'¿Hace falta dron?',def:false}],
       filas:[
-        ['Planificación con la organización','',1,1,'Nada'],
-        ['Operadores de cámara','',1,1,'Nada'],
-        ['Entrevistas','si las queréis',1,1,'Nada','entrevistas'],
-        ['Dron','si hace falta',1,1,'Nada','dron'],
-        ['Aftermovie: montaje, color y música','',1,1,'Nada'],
-        ['Piezas cortas para redes','',1,1,'Nada']]},
+        ['Planificación con la organización','',1,1,''],
+        ['Operadores de cámara','',1,1,''],
+        ['Entrevistas','si las queréis',1,1,'','entrevistas'],
+        ['Dron','si hace falta',1,1,'','dron'],
+        ['Aftermovie: montaje, color y música','',1,1,''],
+        ['Piezas cortas para redes','',1,1,'']]},
     podcast:{nombre:'Videopodcast', nota:'cada persona tiene su cámara. que nadie se quede sin su primer plano.', muestra:false,
       preguntas:[{id:'suelto',txt:'¿Es un episodio suelto?',def:false},{id:'episodios',txt:'¿Cuántos episodios al mes?',opciones:[1,2,3,4],def:1,si:['suelto',false]},{id:'lugar',txt:'¿Dónde lo grabamos?',opciones:[['En tu oficina','oficina'],['En un plató','plato']],def:'oficina'},{id:'personas',txt:'¿Cuántas personas salen?',opciones:[2,3,4,5],def:2}],
       filas:[
-        ['Escaleta del episodio','',1,1,'Nada'],
-        ['Set en tu oficina','vamos con nuestro equipo a donde haga falta y te montamos el set',1,1,'Nada: no pagas plató',['lugar','oficina']],
-        ['Grabación en plató','',1,1,'Nada',['lugar','plato']],
-        ['Decorado del set','',1,0,'Montarlo: fondo creado con IA en croma'],
-        ['{n} cámaras de plano corto, una por persona, y planos generales','',1,1,'Nada: que nadie se quede sin su primer plano'],
-        ['Sonido','',1,1,'Nada: un podcast se escucha antes de verse'],
-        ['Edición del episodio','',1,1,'Nada'],
-        ['Miniatura','',1,1,'Nada'],
-        ['Clips para redes','',1,1,'Nada']]},
+        ['Escaleta del episodio','',1,1,''],
+        ['Set en tu oficina','vamos con nuestro equipo a donde haga falta y te montamos el set',1,1,'',['lugar','oficina']],
+        ['Grabación en plató','',1,1,'',['lugar','plato']],
+        ['Decorado del set','',1,0,'Con IA el fondo se crea sobre croma, sin montar decorado'],
+        ['{n} cámaras de plano corto, una por persona, y planos generales','',1,1,''],
+        ['Sonido','',1,1,''],
+        ['Edición del episodio','',1,1,''],
+        ['Miniatura','',1,1,''],
+        ['Clips para redes','',1,1,'']]},
     redes:{nombre:'Contenido para redes', nota:'un día de rodaje, tres meses sin pensar qué subir.', muestra:false,
       preguntas:[{id:'personas',txt:'¿Salen personas?',def:true}],
       filas:[
-        ['Plan de contenidos para 3 meses','',1,1,'Nada'],
-        ['Personas que salen','si salen',1,1,'Nada','personas'],
-        ['Varias localizaciones','',1,0,'Moverse: los escenarios se crean con IA'],
-        ['Un día de rodaje','',1,1,'Nada'],
-        ['Edición de 20-30 piezas','',1,1,'Nada'],
-        ['Subtítulos y formatos vertical y horizontal','',1,1,'Nada']]}
+        ['Plan de contenidos para 3 meses','',1,1,''],
+        ['Personas que salen','si salen',1,1,'','personas'],
+        ['Varias localizaciones','',1,0,'Con IA los escenarios se crean sin moverse'],
+        ['Un día de rodaje','',1,1,''],
+        ['Edición de 20-30 piezas','',1,1,''],
+        ['Subtítulos y formatos vertical y horizontal','',1,1,'']]}
   };
   var orden = ['spot','corporativo','evento','podcast','redes'];
-  var estado = {tipo:'spot', resp:{}, quitadas:{}};
+  var estado = {tipo:'spot', resp:{}, eleccion:{}};
 
   var $ = function(id){return document.getElementById(id);};
   function respuestasPorDefecto(t){ var r={}; T[t].preguntas.forEach(function(p){r[p.id]=p.def;}); return r; }
@@ -597,7 +615,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     orden.forEach(function(k){
       var b=document.createElement('button'); b.type='button'; b.className='tipo'; b.id='tipo-'+k;
       b.textContent=T[k].nombre; b.setAttribute('aria-pressed', String(k===estado.tipo));
-      b.addEventListener('click', function(){ estado.tipo=k; estado.resp=respuestasPorDefecto(k); estado.quitadas={}; pintar(); });
+      b.addEventListener('click', function(){ estado.tipo=k; estado.resp=respuestasPorDefecto(k); estado.eleccion={}; pintar(); });
       c.appendChild(b);
     });
   }
@@ -618,28 +636,39 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       d.appendChild(g); c.appendChild(d);
     });
   }
-  var ICO_EQ='<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="5" r="3" fill="currentColor"/><path d="M2 15c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" fill="currentColor"/></svg>';
-  function chipEquipo(){ return '<span class="quien">'+ICO_EQ+'Nuestro equipo</span>'; }
-  function chipIA(){ return '<span class="quien ia">✦ La pone la IA</span>'; }
-  function ahorro(t){ return t.charAt(0).toLowerCase()+t.slice(1); }
+  // Cada fase: las que solo hace el equipo se eligen «Sí / No hace falta»; las que admiten IA, «Real / Con IA / No hace falta». Por defecto, real.
+  function opcion(fila, i, key, actual, valor, texto, clase){
+    var b=document.createElement('button'); b.type='button'; b.id='op-'+key+'-'+valor; b.textContent=texto;
+    if(clase) b.className=clase;
+    b.setAttribute('aria-pressed', String(actual===valor));
+    b.addEventListener('click', function(){ estado.eleccion[key]=valor; pintar(); });
+    return b;
+  }
   function pintarFilas(){
-    var tb=$('filas'); tb.innerHTML=''; var nR=0, nI=0, deIA=[];
+    var tb=$('filas'); tb.innerHTML=''; var nTot=0, nIA=0, conIA=[], hayOpcionIA=false;
     T[estado.tipo].filas.forEach(function(f, i){
       var cond=f[5]; if(cond && (Array.isArray(cond) ? estado.resp[cond[0]]!==cond[1] : !estado.resp[cond])) return;
-      var key=estado.tipo+'-'+i, quitada=!!estado.quitadas[key];
-      var nombre=f[0].replace('{n}',estado.resp.personas);
-      if(!quitada){ nR++; if(f[3]) nI++; else deIA.push(nombre.toLowerCase()); }
-      var tr=document.createElement('tr'); if(quitada) tr.className='quitada';
-      var nota=/^Nada/.test(f[4]) ? '' : '<small>Te ahorras '+ahorro(f[4])+'</small>';
-      tr.innerHTML='<td class="fase">'+nombre+(f[1]?'<small>'+f[1]+'</small>':'')+'</td>'+
-        '<td>'+(f[3]?chipEquipo()+nota:chipIA()+nota)+'</td>';
-      var q=document.createElement('button'); q.type='button'; q.className='quitar'; q.id='quitar-'+key;
-      q.textContent=quitada?'volver a poner':'quitar';
-      q.addEventListener('click', function(){ estado.quitadas[key]=!quitada; pintar(); });
-      tr.firstChild.appendChild(q); tb.appendChild(tr);
+      var key=estado.tipo+'-'+i, admiteIA=!f[3], nombre=f[0].replace('{n}',estado.resp.personas);
+      var actual=estado.eleccion[key] || (admiteIA?'real':'si');
+      if(admiteIA) hayOpcionIA=true;
+      if(actual!=='no'){ nTot++; if(actual==='ia'){ nIA++; conIA.push(nombre.toLowerCase()); } }
+      var tr=document.createElement('tr'); if(actual==='no') tr.className='quitada';
+      var td1=document.createElement('td'); td1.className='fase';
+      td1.innerHTML=nombre+(f[1]?'<small>'+f[1]+'</small>':'')+(admiteIA&&actual==='ia'&&f[4]?'<small class="ahorro-ia">✦ '+f[4]+'</small>':'');
+      var td2=document.createElement('td'); var g=document.createElement('div'); g.className='elige'; g.setAttribute('role','group'); g.setAttribute('aria-label','Cómo quieres '+nombre.toLowerCase());
+      if(admiteIA){
+        g.appendChild(opcion(f,i,key,actual,'real','Real'));
+        g.appendChild(opcion(f,i,key,actual,'ia','✦ Con IA','op-ia'));
+      } else {
+        g.appendChild(opcion(f,i,key,actual,'si','Sí'));
+      }
+      g.appendChild(opcion(f,i,key,actual,'no','No hace falta'));
+      td2.appendChild(g); tr.appendChild(td1); tr.appendChild(td2); tb.appendChild(tr);
     });
-    var dif=nR-nI;
-    $('n-rodaje').textContent=nR; $('n-ia').textContent=dif;
+    $('n-rodaje').textContent=nTot-nIA; $('n-ia').textContent=nIA;
+    $('fila-ia').hidden=!hayOpcionIA;
+    var conY = conIA.some(function(x){return / y /.test(x);});
+    var lista = conIA.length<2 ? (conIA[0]||'') : conY ? conIA.join('; ') : conIA.slice(0,-1).join(', ')+' y '+conIA[conIA.length-1];
     var extra = '';
     if(estado.tipo==='podcast'){
       var r=estado.resp, partes=[];
@@ -648,9 +677,9 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       partes.push(r.lugar==='plato'?'en plató':'en tu oficina');
       extra=' ('+partes.join(', ')+')';
     }
-    var conY = deIA.some(function(x){return / y /.test(x);});
-    var lista = deIA.length<2 ? (deIA[0]||'') : conY ? deIA.join('; ') : deIA.slice(0,-1).join(', ')+' y '+deIA[deIA.length-1];
-    $('frase').textContent = 'Tu '+T[estado.tipo].nombre.toLowerCase()+extra+' lleva '+nR+(nR===1?' fase':' fases')+'. '+(dif>0?'En la versión con IA, '+(dif===1?'una la pone':dif+' las pone')+' la IA ('+lista+') y no '+(dif===1?'la pagas.':'las pagas.')+' Todo lo demás lo hace nuestro equipo.':'Todas las hace nuestro equipo: aquí la IA no ahorra nada.')+' Te mandamos el presupuesto desglosado partida por partida en menos de 24 horas.';
+    $('frase').textContent = 'Tu '+T[estado.tipo].nombre.toLowerCase()+extra+' lleva '+nTot+(nTot===1?' fase':' fases')+
+      (nIA>0 ? ': '+(nTot-nIA)+' las hace nuestro equipo y '+(nIA===1?'una va':nIA+' van')+' con IA ('+lista+').' : ', todas reales, con nuestro equipo.'+(hayOpcionIA?' Si quieres ahorrar, prueba la opción con IA donde aparece.':''))+
+      ' Te mandamos el presupuesto desglosado partida por partida en menos de 24 horas.';
   }
   function pintar(){
     pintarTipos(); pintarPreguntas(); pintarFilas();
@@ -678,7 +707,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     tp.filas.forEach(function(f,i){
       var cond=f[5]; if(cond && (Array.isArray(cond) ? estado.resp[cond[0]]!==cond[1] : !estado.resp[cond])) return;
       var nom=f[0].replace('{n}',estado.resp.personas);
-      fases.push((estado.quitadas[estado.tipo+'-'+i]?'QUITADA · ':'')+nom);
+      var el=estado.eleccion[estado.tipo+'-'+i]||(!f[3]?'real':'si');
+      fases.push(nom+(el==='no'?' (no hace falta)':el==='ia'?' (con IA)':!f[3]?' (real)':''));
     });
     return {tipo:tp.nombre, respuestas:lineas.join(' | '), fases:fases.join(' | '), frase:$('frase').textContent};
   }
@@ -699,7 +729,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     w3.append('from_name','Configurador CULTHOUSE');
     w3.append('Tipo de vídeo',c.tipo);
     w3.append('Respuestas',c.respuestas);
-    w3.append('Fases (las quitadas van marcadas)',c.fases);
+    w3.append('Fases y cómo las quiere',c.fases);
     w3.append('Resumen',c.frase);
     w3.append('Tipo de empresa',f.empresa.value);
     w3.append('Nombre',f.nombre.value);
