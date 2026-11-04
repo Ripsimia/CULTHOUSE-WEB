@@ -508,8 +508,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
     <section class="resumen" aria-labelledby="r" id="presupuesto">
       <h2 id="r" class="sr">Resumen</h2>
       <div class="cuentas">
-        <div class="cuenta"><b id="n-rodaje">0</b><span>con nuestro equipo</span></div>
-        <div class="cuenta" id="fila-ia"><b id="n-ia">0</b><span>✦ con IA</span></div>
+        <div class="cuenta"><b id="n-rodaje">0</b><span>en rodaje real</span></div>
+        <div class="cuenta" id="fila-ia"><b id="n-ia">0</b><span>✦ creadas con IA</span></div>
       </div>
       <p class="frase" id="frase"></p>
       <form id="form" novalidate>
@@ -668,7 +668,7 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       extra=' ('+partes.join(', ')+')';
     }
     $('frase').textContent = 'Tu '+T[estado.tipo].nombre.toLowerCase()+extra+' lleva '+nTot+(nTot===1?' fase':' fases')+
-      (nIA>0 ? ': '+(nTot-nIA)+' las hace nuestro equipo y '+(nIA===1?'una va':nIA+' van')+' con IA ('+lista+').' : ', todas reales, con nuestro equipo.'+(hayOpcionIA?' Si quieres ahorrar, prueba la opción con IA donde aparece.':''))+
+      (nIA>0 ? ': '+(nTot-nIA)+' en rodaje real y '+nIA+(nIA===1?' creada':' creadas')+' con IA por nuestro equipo ('+lista+').' : ', todas en rodaje real.'+(hayOpcionIA?' Si quieres ahorrar, prueba la opción con IA donde aparece.':''))+
       ' Te mandamos el presupuesto desglosado partida por partida en menos de 24 horas.';
   }
   function pintar(){
