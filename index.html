@@ -138,6 +138,9 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .escenario .tipos a:hover{border-color:currentColor;color:var(--luz)}
 .escenario .postdata{color:rgba(241,236,226,.75)!important}
 .escenario .btn-lleno{background:#f1ece2;color:#161512;border-color:#f1ece2}
+.escenario .botones-portada{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px}
+.escenario .btn-hueco{background:rgba(11,11,10,.35);color:#f1ece2;border-color:rgba(241,236,226,.75)}
+.escenario .btn-hueco:hover{background:#f1ece2;color:#161512;border-color:#f1ece2}
 .escenario .btn-lleno:hover{background:var(--luz);border-color:var(--luz);color:#161512}
 .portada .escenario .lema{margin-top:4px!important}
 .portada .escenario .bajo{color:rgba(241,236,226,.8)}
@@ -374,7 +377,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <li class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button>
         <ul class="sub" id="sub-serv"><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html">Publi con IA</a></li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html">Cursos y formación</a></li><li><a href="podcast-madrid.html">Podcast y videopodcast</a></li><li><a href="videoclips-madrid.html">Videoclips</a></li><li><a href="cine-documental-madrid.html">Cine y documental</a></li><li class="todos"><a href="#servicios">Todos los servicios</a></li></ul>
       </li>
-      <li><a href="tu-video-sin-partidas-ocultas.html">Sin partidas ocultas</a></li>
+      <li><a href="tu-video-sin-partidas-ocultas.html">Tu vídeo</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -401,8 +404,11 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       <div class="centro">
         <p class="claim">Productora audiovisual en Madrid.<br>De la idea a la pantalla.</p>
         <p class="tipos"><a href="publicidad-madrid.html">Spots</a> · <a href="publi-ia-madrid.html">Publi con IA</a> · <a href="video-corporativo-madrid.html">Vídeo corporativo</a> · <a href="eventos-madrid.html">Eventos</a> · <a href="formacion-online-madrid.html">Formación</a> · <a href="podcast-madrid.html">Podcast</a> · <a href="reels-redes-madrid.html">Reels</a> · <a href="videoclips-madrid.html">Videoclips</a></p>
-        <a class="btn btn-lleno btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
-        <a class="btn btn-lleno btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
+        <div class="botones-portada">
+          <a class="btn btn-lleno btn-grande" href="tu-video-sin-partidas-ocultas.html">Tu vídeo, sin partidas ocultas</a>
+          <a class="btn btn-hueco btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+          <a class="btn btn-hueco btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
+        </div>
         <p class="lema">del bosque a la pantalla, sin perder el norte</p>
       </div>
       </div>
