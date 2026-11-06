@@ -363,7 +363,12 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
 .faq details[open] summary::after{content:"–"}
 .faq details p{margin:10px 0 0;max-width:62ch}
 /* Móvil: el vídeo de la sala se ve entero, sin recortar, sobre fondo negro */
-@media (max-width:900px){.portada .escenario video{object-fit:contain;object-position:50% 38%}}
+@media (max-width:900px){
+  .portada .escenario{min-height:0;justify-content:flex-start;padding-top:calc(56.25vw + 18px)}
+  .portada .escenario video{object-fit:contain;object-position:50% 0}
+  .portada .escenario::after{background:linear-gradient(to bottom,rgba(11,11,10,0) calc(56.25vw - 70px),#0b0b0a 56.25vw)}
+  .dato{min-height:0;padding:16px 18px}
+}
 </style>
 <!-- Microsoft Clarity, sin cookies -->
 <script type="text/javascript">
