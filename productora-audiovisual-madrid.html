@@ -356,6 +356,8 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
 .foto-ancha{margin:clamp(24px,4vw,40px) 0 0;border:1px solid var(--linea)}
 .foto-ancha img{display:block;width:100%;height:auto;aspect-ratio:1600/879;object-fit:cover}
 @media (max-width:900px){.portada-ev{grid-template-columns:1fr}.foto-ev .nota-mano{right:auto;left:4%}}
+.botones-arriba{display:none}
+@media (max-width:900px){.botones-arriba{display:flex;flex-direction:column;align-items:stretch;margin-top:14px}.botones-arriba .btn{text-align:center}}
 .cab-ev{position:relative}
 .desp{position:relative;display:inline-block}
 .desp-btn{background:none;border:0;padding:0;font:inherit;font-size:13px;color:var(--gris);cursor:pointer;white-space:nowrap}
@@ -394,6 +396,10 @@ h1.gigante{font-size:clamp(3.6rem,10vw,9.5rem)}
       <div>
         <h1 class="gigante">Productora<br>audiovisual<br>en Madrid</h1>
         <p class="nota-suelta">lo que tienen las grandes marcas y tú no:<br>una productora. hasta hoy</p>
+        <div class="botones botones-arriba">
+          <a class="btn btn-lleno btn-grande" href="tu-video-sin-partidas-ocultas.html">Tu vídeo, sin partidas ocultas</a>
+          <a class="btn btn-grande" href="https://wa.me/34651129062?text=Hola%2C%20quiero%20presupuesto%20para%20un%20v%C3%ADdeo" target="_blank" rel="noopener">Pide presupuesto por WhatsApp</a>
+        </div>
       </div>
       <figure class="proyeccion foto-ev">
         <div class="pantalla"><video autoplay muted playsinline preload="metadata" poster="img/sala-inicio.jpg" aria-label="Sala de cine con trabajos de CULTHOUSE en pantalla"><source src="img/sala-720.mp4" type="video/mp4" media="(max-width:900px)"><source src="img/sala.mp4" type="video/mp4"></video></div>
