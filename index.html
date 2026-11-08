@@ -161,7 +161,7 @@ h2.gigante{font-size:clamp(3.4rem,9.5vw,9rem)}
 .nos .texto p{margin:0}
 .nos .texto p:first-child{font-size:18px;line-height:1.45;font-weight:400}
 .datos{display:grid;gap:12px;align-content:start}
-.dato{background:var(--tarjeta);border:1px solid var(--linea);padding:18px 20px;min-height:120px;display:flex;align-items:flex-end;font-size:14px}
+.dato{background:var(--tarjeta);border:1px solid var(--linea);padding:18px 20px;display:flex;align-items:center;font-size:14px}
 .equipo{max-width:760px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,32px);margin-top:clamp(40px,6vw,72px)}
 .persona .foto{aspect-ratio:4/5}
 .persona h3{font-family:var(--display);font-weight:500;font-size:28px;line-height:1;margin:16px 0 4px;text-transform:uppercase}
@@ -386,7 +386,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   <div class="cab">
     <a href="#inicio" class="marca anda" aria-label="CULTHOUSE, inicio"><span class="logo" aria-hidden="true"><i class="izq"></i><i class="der"></i><i class="casa"></i></span>CULTHOUSE</a>
     <ul class="menu">
-      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
       <li class="desp"><button type="button" class="desp-btn" aria-expanded="false" aria-controls="sub-serv">Servicios</button>
         <ul class="sub" id="sub-serv"><li class="grupo">Publicidad y marcas</li><li><a href="publicidad-madrid.html">Publicidad y spots</a></li><li><a href="publi-ia-madrid.html">Publi con IA</a></li><li><a href="reels-redes-madrid.html">Reels y redes</a></li><li class="grupo">Empresas e instituciones</li><li><a href="video-corporativo-madrid.html">Vídeo corporativo</a></li><li><a href="eventos-madrid.html">Eventos</a></li><li><a href="formacion-online-madrid.html">Cursos y formación</a></li><li><a href="podcast-madrid.html">Podcast y videopodcast</a></li><li class="grupo">Cultura y entretenimiento</li><li><a href="videoclips-madrid.html">Videoclips</a></li><li><a href="cine-documental-madrid.html">Cine y documental</a></li><li class="todos"><a href="#servicios">Todos los servicios</a></li></ul>
       </li>
@@ -426,81 +426,6 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       </div>
       </div>
     </div>
-  </section>
-
-  <!-- ✏️ EDITA AQUÍ: NOSOTROS. Cambia los textos entre <p> y </p>. Fotos: img/sima.jpg e img/retrato-om-2026.jpg -->
-  <section id="nosotros" data-nota="oficio, intención y nada de ruido">
-    <h2 class="gigante">Nosotros</h2>
-    <div class="nos">
-      <div class="texto">
-        <p>7 años de oficio y unos 200 proyectos a la espalda. Montamos el equipo que pide cada historia: a veces tres personas, a veces treinta.</p>
-        <p><strong>Qué hacemos por ti:</strong></p>
-        <ul class="porti">
-          <li><strong>Escucharte primero.</strong> Antes de hablar de cámaras, queremos entender qué necesitas y para qué.</li>
-          <li><strong>Ponértelo fácil.</strong> Guion, permisos, rodaje, montaje: lo hacemos todo. Tú solo dices «me gusta».</li>
-          <li><strong>Decirte la verdad.</strong> Si algo no hace falta, te lo decimos.</li>
-        </ul>
-      </div>
-      <div class="datos">
-        <div class="dato">Dirección con más de 15 años de oficio y créditos en producciones para Netflix</div>
-        <div class="dato">Equipo de rodaje y estudio de edición propios en San Sebastián de los Reyes</div>
-      </div>
-    </div>
-    <div class="equipo">
-      <article class="persona">
-        <div class="foto"><img src="img/sima.jpg" alt="Sima Abram, productora ejecutiva de CULTHOUSE" onerror="this.remove()"></div>
-        <h3>Sima Abram</h3>
-        <p class="rol">Productora ejecutiva</p>
-        <p>Productora y guionista. Levanta cada proyecto: desarrollo, financiación y producción.</p>
-      </article>
-      <article class="persona">
-        <div class="foto"><img src="img/retrato-om-2026.jpg" alt="Oscar Morillas, director de CULTHOUSE" onerror="this.remove()"></div>
-        <h3>Oscar Morillas</h3>
-        <p class="rol">Realizador y director</p>
-        <p>Dirige, realiza y rueda. Más de 15 años detrás de la cámara.</p>
-        <p class="mas-oscar"><a class="btn btn-lleno" href="oscar.html">Mira lo que ha hecho Oscar →</a></p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ✏️ EDITA AQUÍ: CLIENTES. Cada <div class="ficha"> es una tarjeta. La última (negra) es «Aquí podría estar tu proyecto» -->
-  <section class="clientes" data-nota="gente que ya confió en nosotros">
-    <p class="titulo">¿Con quién hemos trabajado?</p>
-    <div class="mesa">
-      <div class="ficha">Roche</div>
-      <div class="ficha">CaixaForum</div>
-      <div class="ficha">Ministerio de Sanidad</div>
-      <div class="ficha">Acción Cultural Española</div>
-      <div class="ficha">ATRESplayer</div>
-      <div class="ficha">Mahou</div>
-      <div class="ficha">Aquí podría estar tu proyecto</div>
-    </div>
-  </section>
-
-  <!-- ✏️ EDITA AQUÍ: PUBLI CON IA. Vídeo en bucle y sin sonido: img/publi-ia.mp4 (ordenador), img/publi-ia-720.mp4 (móvil), imagen fija img/publi-ia.jpg. En YouTube: https://youtu.be/w2ZCwIAzixA -->
-  <section id="publi-ia" data-nota="¿cuánto costaría rodar esto de verdad? te sorprendería">
-    <h2 class="gigante">Publi con IA</h2>
-    <p class="ia-claim">Rodar lo imposible ya no exige un presupuesto imposible.</p>
-    <div class="ia-video">
-      <video id="video-ia" autoplay muted loop playsinline preload="metadata" poster="img/publi-ia.jpg" aria-label="Secuencia de publicidad creada con IA por CULTHOUSE">
-        <source src="img/publi-ia-720.mp4" type="video/mp4" media="(max-width: 900px)">
-        <source src="img/publi-ia.mp4" type="video/mp4">
-      </video>
-      <button type="button" class="ia-sonido" id="ia-sonido" aria-pressed="false">Con sonido</button>
-    </div>
-    <div class="ia-texto">
-      <p class="ia-grande">Combinamos rodaje real, inteligencia artificial y entornos virtuales para desarrollar producciones que, con métodos tradicionales, podrían requerir más tiempo, localizaciones y presupuesto.</p>
-      <p>Rodamos a personas reales en nuestro estudio y creamos con IA todo lo demás: escenarios, efectos, mundos enteros.</p>
-    </div>
-    <ul class="ia-puntos">
-      <li><strong>Menos rodaje, menos presupuesto.</strong> Un día de estudio en lugar de una semana de localizaciones.</li>
-      <li><strong>Escenarios imposibles.</strong> Si se puede imaginar, se puede rodar.</li>
-      <li><strong>Listo en unos días.</strong></li>
-    </ul>
-    <p class="ia-cta"><span class="mano">¿ya te lo estás imaginando?</span>
-      <a class="btn btn-lleno btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
-      <a class="btn btn-lleno btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20interesa%20la%20publi%20con%20IA" target="_blank" rel="noopener">Cuéntanos tu idea por WhatsApp</a>
-    </p>
   </section>
 
   <!-- ✏️ EDITA AQUÍ: SERVICIOS. Cada <li> de "serv-grid" es un servicio: nombre, frase corta y enlace a su página. Foto de la pantalla: img/proyeccion.jpg -->
@@ -560,6 +485,48 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       </div>
     </div>
   </section>
+
+
+  <!-- ✏️ EDITA AQUÍ: CLIENTES. Cada <div class="ficha"> es una tarjeta. La última (negra) es «Aquí podría estar tu proyecto» -->
+  <section class="clientes" data-nota="gente que ya confió en nosotros">
+    <p class="titulo">¿Con quién hemos trabajado?</p>
+    <div class="mesa">
+      <div class="ficha">Roche</div>
+      <div class="ficha">CaixaForum</div>
+      <div class="ficha">Ministerio de Sanidad</div>
+      <div class="ficha">Acción Cultural Española</div>
+      <div class="ficha">ATRESplayer</div>
+      <div class="ficha">Mahou</div>
+      <div class="ficha">Aquí podría estar tu proyecto</div>
+    </div>
+  </section>
+
+  <!-- ✏️ EDITA AQUÍ: PUBLI CON IA. Vídeo en bucle y sin sonido: img/publi-ia.mp4 (ordenador), img/publi-ia-720.mp4 (móvil), imagen fija img/publi-ia.jpg. En YouTube: https://youtu.be/w2ZCwIAzixA -->
+  <section id="publi-ia" data-nota="¿cuánto costaría rodar esto de verdad? te sorprendería">
+    <h2 class="gigante">Publi con IA</h2>
+    <p class="ia-claim">Rodar lo imposible ya no exige un presupuesto imposible.</p>
+    <div class="ia-video">
+      <video id="video-ia" autoplay muted loop playsinline preload="metadata" poster="img/publi-ia.jpg" aria-label="Secuencia de publicidad creada con IA por CULTHOUSE">
+        <source src="img/publi-ia-720.mp4" type="video/mp4" media="(max-width: 900px)">
+        <source src="img/publi-ia.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="ia-sonido" id="ia-sonido" aria-pressed="false">Con sonido</button>
+    </div>
+    <div class="ia-texto">
+      <p class="ia-grande">Combinamos rodaje real, inteligencia artificial y entornos virtuales para desarrollar producciones que, con métodos tradicionales, podrían requerir más tiempo, localizaciones y presupuesto.</p>
+      <p>Rodamos a personas reales en nuestro estudio y creamos con IA todo lo demás: escenarios, efectos, mundos enteros.</p>
+    </div>
+    <ul class="ia-puntos">
+      <li><strong>Menos rodaje, menos presupuesto.</strong> Un día de estudio en lugar de una semana de localizaciones.</li>
+      <li><strong>Escenarios imposibles.</strong> Si se puede imaginar, se puede rodar.</li>
+      <li><strong>Listo en unos días.</strong></li>
+    </ul>
+    <p class="ia-cta"><span class="mano">¿ya te lo estás imaginando?</span>
+      <a class="btn btn-lleno btn-grande solo-pc" href="#puerta" data-puerta>Llama a la puerta</a>
+      <a class="btn btn-lleno btn-grande solo-movil" href="https://wa.me/34651129062?text=Hola%2C%20me%20interesa%20la%20publi%20con%20IA" target="_blank" rel="noopener">Cuéntanos tu idea por WhatsApp</a>
+    </p>
+  </section>
+
 
   <!-- ✏️ EDITA AQUÍ: CÓMO TRABAJAMOS. Cuatro pasos: cambia el título <h3> y el texto <p> de cada uno -->
   <section id="proceso" data-nota="tú hablas, la casa se pone a andar">
