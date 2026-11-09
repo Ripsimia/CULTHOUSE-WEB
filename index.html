@@ -759,7 +759,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
   document.querySelectorAll('dialog.visor').forEach(function(d){
     d.addEventListener('click',function(e){if(e.target===d||e.target.hasAttribute('data-cierra'))d.close();});
   });
-  // Formulario: primero Web3Forms; si falla, FormSubmit; si los dos fallan, aviso con WhatsApp y email ya escritos
+  // Formulario: Web3Forms y FormSubmit a la vez (basta con que llegue uno); si los dos fallan, aviso con WhatsApp y email ya escritos
   var W3K='4a0cc235-3262-4246-9ce2-845c9b6b265b';
   var form=document.getElementById('form');
   if(form && window.fetch && window.FormData){
@@ -787,8 +787,8 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       w3.append('Nombre',fd.get('nombre')||''); w3.append('Contacto',fd.get('contacto')||''); w3.append('Mensaje',fd.get('mensaje')||'');
       w3.append('Página',location.href);
       var primero = /^PEGAR/.test(W3K) ? Promise.resolve(false) : envia('https://api.web3forms.com/submit', w3);
-      primero
-        .then(function(ok){ return ok || envia('https://formsubmit.co/ajax/hey@culthouse.art', fd); })
+      Promise.all([primero, envia('https://formsubmit.co/ajax/hey@culthouse.art', fd)])
+        .then(function(r){ return r[0] || r[1]; })
         .then(function(ok){
           if(ok){ if(window.clarity) window.clarity('event','formulario_enviado'); location.href='gracias.html'; return; }
           if(window.clarity) window.clarity('event','formulario_error');
