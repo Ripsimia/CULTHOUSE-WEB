@@ -75,7 +75,7 @@
   var envia = function (url, body) {
     var ctrl = window.AbortController ? new AbortController() : null;
     var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, 10000);
-    return fetch(url, { method: 'POST', headers: { 'Accept': 'application/json' }, body: body, signal: ctrl ? ctrl.signal : undefined })
+    return fetch(url, { method: 'POST', headers: { 'Accept': 'application/json' }, body: body, keepalive: true, signal: ctrl ? ctrl.signal : undefined })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { clearTimeout(t); return r.ok && String(j.success) === 'true'; }); })
       .catch(function () { clearTimeout(t); return false; });
   };
@@ -104,9 +104,9 @@
     fs.append('nombre', fd.get('nombre') || ''); fs.append('contacto', fd.get('contacto') || ''); fs.append('mensaje', fd.get('mensaje') || '');
     fs.append('pagina', location.href);
 
-    // Los dos servicios a la vez: basta con que llegue uno
-    Promise.all([envia('https://api.web3forms.com/submit', w3), envia('https://formsubmit.co/ajax/hey@culthouse.art', fs)])
-      .then(function (r) { return r[0] || r[1]; })
+    // Basta con que llegue uno: en cuanto uno responde bien, seguimos (keepalive deja terminar al otro)
+    var unoBasta = function (ps) { return new Promise(function (res) { var n = ps.length; ps.forEach(function (p) { p.then(function (ok) { if (ok) res(true); else if (--n === 0) res(false); }); }); }); };
+    unoBasta([envia('https://api.web3forms.com/submit', w3), envia('https://formsubmit.co/ajax/hey@culthouse.art', fs)])
       .then(function (ok) {
         if (ok) { if (window.clarity) window.clarity('event', 'formulario_enviado'); location.href = 'gracias.html'; return; }
         if (window.clarity) window.clarity('event', 'formulario_error');

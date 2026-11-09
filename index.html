@@ -766,7 +766,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
     var envia=function(url, body){
       var ctrl=window.AbortController?new AbortController():null;
       var t=setTimeout(function(){ if(ctrl) ctrl.abort(); },10000);
-      return fetch(url,{method:'POST',headers:{'Accept':'application/json'},body:body,signal:ctrl?ctrl.signal:undefined})
+      return fetch(url,{method:'POST',headers:{'Accept':'application/json'},body:body,keepalive:true,signal:ctrl?ctrl.signal:undefined})
         .then(function(r){return r.json().catch(function(){return {};}).then(function(j){clearTimeout(t); return r.ok && String(j.success)==='true';});})
         .catch(function(){clearTimeout(t); return false;});
     };
@@ -787,8 +787,7 @@ footer{margin-left:var(--lateral);padding:20px clamp(16px,3vw,40px);display:flex
       w3.append('Nombre',fd.get('nombre')||''); w3.append('Contacto',fd.get('contacto')||''); w3.append('Mensaje',fd.get('mensaje')||'');
       w3.append('Página',location.href);
       var primero = /^PEGAR/.test(W3K) ? Promise.resolve(false) : envia('https://api.web3forms.com/submit', w3);
-      Promise.all([primero, envia('https://formsubmit.co/ajax/hey@culthouse.art', fd)])
-        .then(function(r){ return r[0] || r[1]; })
+      new Promise(function(res){ var n=2; [primero, envia('https://formsubmit.co/ajax/hey@culthouse.art', fd)].forEach(function(p){ p.then(function(ok){ if(ok) res(true); else if(--n===0) res(false); }); }); })
         .then(function(ok){
           if(ok){ if(window.clarity) window.clarity('event','formulario_enviado'); location.href='gracias.html'; return; }
           if(window.clarity) window.clarity('event','formulario_error');
