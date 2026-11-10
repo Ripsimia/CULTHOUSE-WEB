@@ -4,7 +4,8 @@
    Al enviarse bien, lleva a gracias.html (que cuenta la conversión de Google Ads). */
 (function () {
   if (!window.HTMLDialogElement) return;
-  var botones = document.querySelectorAll('a.btn-lleno[href^="mailto:"]');
+  var SEL = 'a.btn-lleno[href^="mailto:"], a[data-formulario]';
+  var botones = document.querySelectorAll(SEL);
   if (!botones.length) return;
 
   var css = document.createElement('style');
@@ -58,10 +59,10 @@
 
   // Captura: se adelanta al contador de clics en email, para no contar como contacto algo que aún no lo es
   window.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a.btn-lleno[href^="mailto:"]');
+    var a = e.target.closest && e.target.closest(SEL);
     if (!a || d.contains(a)) return;
     e.preventDefault(); e.stopPropagation();
-    titulo.textContent = (a.textContent || 'Cuéntanos tu proyecto').trim();
+    titulo.textContent = (a.getAttribute('data-formulario') || a.textContent || 'Cuéntanos tu proyecto').trim();
     d.showModal();
     setTimeout(function () { d.querySelector('#vf-nombre').focus(); }, 50);
     if (window.clarity) window.clarity('event', 'formulario_abierto');
